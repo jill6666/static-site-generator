@@ -1,0 +1,56 @@
+{
+  "schema": [
+    {
+      "type": "Accordion",
+      "props": {
+        "items": [
+          {
+            "trigger": "Is it accessible?",
+            "content": "Yes. It adheres to the WAI-ARIA design pattern."
+          },
+          {
+            "trigger": "Is it styled?",
+            "content": "Yes. It comes with default styles that matches the other components' aesthetic."
+          },
+          {
+            "trigger": "Is it animated?",
+            "content": "Yes. It's animated by default, but you can disable it if you prefer."
+          }
+        ]
+      }
+    },
+    { "type": "AspectRatio", "props": { "ratio": [16, 9], "imgUrl": "" } },
+    { "type": "Box", "props": { "padding": "2px" } },
+    { "type": "Button", "props": { "navigateTo": "/", "text": "Click me!" } },
+    {
+      "type": "Card",
+      "props": {
+        "title": "Card Title",
+        "description": "Card Description",
+        "cardContent": "Card Content"
+      }
+    },
+    {
+      "type": "Carousel",
+      "props": {
+        "orientation": "vertical",
+        "items": [
+          { "imgUrl": "", "navigateTo": "/" },
+          { "imgUrl": "", "navigateTo": "/" },
+          { "imgUrl": "", "navigateTo": "/" }
+        ]
+      }
+    },
+    { "type": "Progress", "props": { "value": "33" } },
+    {
+      "type": "Tabs",
+      "props": {
+        "items": [
+          { "tab": "account", "content": "Make changes to your account here." },
+          { "tab": "password", "content": "Change your password here." }
+        ]
+      }
+    },
+    { "type": "Text", "props": { "text": "Hello, world" } }
+  ]
+}
