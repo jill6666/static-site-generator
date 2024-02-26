@@ -1,4 +1,6 @@
-const Button = () => {
-  return <>Button</>;
+import { Button } from "./markup";
+
+const MyButton = ({ text = "" }) => {
+  return <Button>{text}</Button>;
 };
-export default Button;
+export default MyButton;

@@ -1,4 +1,4 @@
-const Text = () => {
-  return <>Text</>;
+const Text = ({ text }) => {
+  return <>{text}</>;
 };
 export default Text;

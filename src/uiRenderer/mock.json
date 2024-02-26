@@ -2,29 +2,52 @@
   "pageSettings": { "backgroundColor": "#eee" },
   "schema": [
     {
-      "type": "Accordion",
+      "type": "Box",
       "props": {
-        "items": [
+        "padding": ".5rem",
+        "children": [
           {
-            "trigger": "Is it accessible?",
-            "content": "Yes. It adheres to the WAI-ARIA design pattern."
-          },
-          {
-            "trigger": "Is it styled?",
-            "content": "Yes. It comes with default styles that matches the other components' aesthetic."
-          },
-          {
-            "trigger": "Is it animated?",
-            "content": "Yes. It's animated by default, but you can disable it if you prefer."
+            "type": "Accordion",
+            "props": {
+              "items": [
+                {
+                  "trigger": "Is it accessible?",
+                  "content": "Yes. It adheres to the WAI-ARIA design pattern."
+                },
+                {
+                  "trigger": "Is it styled?",
+                  "content": "Yes. It comes with default styles that matches the other components' aesthetic."
+                },
+                {
+                  "trigger": "Is it animated?",
+                  "content": "Yes. It's animated by default, but you can disable it if you prefer."
+                }
+              ]
+            }
           }
         ]
       }
     },
     {
       "type": "AspectRatio",
-      "props": { "ratio": [16, 9], "imgUrl": "" }
+      "props": { "ratio": [16, 9], "imgUrl": "https://cataas.com/cat/gif" }
     },
-    { "type": "Box", "props": { "padding": "2px" } },
+    {
+      "type": "Box",
+      "props": {
+        "padding": "2px",
+        "border": "1px solid #555",
+        "children": [
+          {
+            "type": "AspectRatio",
+            "props": {
+              "ratio": [21, 9],
+              "imgUrl": "https://cataas.com/cat"
+            }
+          }
+        ]
+      }
+    },
     { "type": "Button", "props": { "navigateTo": "/", "text": "Click me!" } },
     {
       "type": "Card",
@@ -39,9 +62,9 @@
       "props": {
         "orientation": "vertical",
         "items": [
-          { "imgUrl": "", "navigateTo": "/" },
-          { "imgUrl": "", "navigateTo": "/" },
-          { "imgUrl": "", "navigateTo": "/" }
+          { "imgUrl": "https://cataas.com/cat/gif", "navigateTo": "/" },
+          { "imgUrl": "https://cataas.com/cat/gif", "navigateTo": "/" },
+          { "imgUrl": "https://cataas.com/cat/gif", "navigateTo": "/" }
         ]
       }
     },
