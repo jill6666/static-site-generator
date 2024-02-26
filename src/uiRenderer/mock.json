@@ -7,88 +7,6 @@
         "padding": ".5rem",
         "children": [
           {
-            "type": "Accordion",
-            "props": {
-              "padding": ".5rem",
-              "margin": ".2rem",
-              "backgroundColor": "white",
-              "borderRadius": "1rem",
-              "triggerColor": "teal",
-              "contentColor": "#555",
-              "items": [
-                {
-                  "trigger": "Is it accessible?",
-                  "content": "Yes. It adheres to the WAI-ARIA design pattern."
-                },
-                {
-                  "trigger": "Is it styled?",
-                  "content": "Yes. It comes with default styles that matches the other components' aesthetic."
-                },
-                {
-                  "trigger": "Is it animated?",
-                  "content": "Yes. It's animated by default, but you can disable it if you prefer."
-                }
-              ]
-            }
-          }
-        ]
-      }
-    },
-    {
-      "type": "Box",
-      "props": {
-        "padding": ".5rem",
-        "children": [
-          {
-            "type": "Tabs",
-            "props": {
-              "height": "200px",
-              "padding": ".5rem",
-              "contentColor": "pink",
-              "backgroundColor": "#333",
-              "borderRadius": "5px",
-              "items": [
-                {
-                  "tab": { "text": "Account", "fontSize": "14px" },
-                  "content": "Make changes to your account here."
-                },
-                {
-                  "tab": { "text": "Password", "fontSize": "14px" },
-                  "content": "Change your password here."
-                }
-              ],
-              "children": [
-                {
-                  "type": "AspectRatio",
-                  "props": {
-                    "ratio": [4, 3],
-                    "imgUrl": "https://cataas.com/cat/gif"
-                  }
-                },{
-                  "type": "AspectRatio",
-                  "props": {
-                    "ratio": [21, 9],
-                    "imgUrl": "https://cataas.com/cat"
-                  }
-                },{
-                  "type": "AspectRatio",
-                  "props": {
-                    "ratio": [21, 9],
-                    "imgUrl": "https://cataas.com/cat/gif"
-                  }
-                }
-              ]
-            }
-          }
-        ]
-      }
-    },
-    {
-      "type": "Box",
-      "props": {
-        "padding": ".5rem",
-        "children": [
-          {
             "type": "AspectRatio",
             "props": {
               "ratio": [21, 9],
@@ -101,7 +19,7 @@
     {
       "type": "Box",
       "props": {
-        "padding": ".5rem",
+        "padding": ".5rem 1rem",
         "margin": "0 0 1rem 0",
         "children": [
           {
@@ -109,7 +27,8 @@
             "props": {
               "text": "Hello, world",
               "fontSize": "32px",
-              "fontWeight": "700"
+              "fontWeight": "700",
+              "textAlign": "right"
             }
           },
           {
@@ -119,6 +38,35 @@
               "color": "teal",
               "backgroundColor": "pink",
               "height": "12px"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "Box",
+      "props": {
+        "padding": ".5rem",
+        "height": "160px",
+        "children": [
+          {
+            "type": "Tabs",
+            "props": {
+              "height": "200px",
+              "padding": ".5rem",
+              "contentColor": "pink",
+              "backgroundColor": "#333",
+              "borderRadius": "5px",
+              "items": [
+                {
+                  "tab": { "text": "Progress", "fontSize": "14px" },
+                  "content": "Displays an indicator showing the completion progress of a task, typically displayed as a progress bar."
+                },
+                {
+                  "tab": { "text": "Tabs", "fontSize": "14px" },
+                  "content": "A set of layered sections of content—known as tab panels—that are displayed one at a time."
+                }
+              ]
             }
           }
         ]
@@ -171,6 +119,26 @@
       "type": "Box",
       "props": {
         "padding": ".5rem",
+        "children": [
+          {
+            "type": "Map",
+            "props": {
+              "positions": [
+                { "lat": 25.0407284, "lng": 121.5484174 },
+                { "lat": 25.0533797, "lng": 121.5462562 },
+                { "lat": 25.0518654, "lng": 121.5448042 }
+              ],
+              "defaultCenter": { "lat": 25.0495911, "lng": 121.5455781 },
+              "defaultZoom": 16
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "Box",
+      "props": {
+        "padding": ".5rem",
         "margin": "0 0 1rem 0",
         "children": [
           {
@@ -193,15 +161,28 @@
         "padding": ".5rem",
         "children": [
           {
-            "type": "Map",
+            "type": "Accordion",
             "props": {
-              "positions": [
-                { "lat": 25.0407284, "lng": 121.5484174 },
-                { "lat": 25.0533797, "lng": 121.5462562 },
-                { "lat": 25.0518654, "lng": 121.5448042 }
-              ],
-              "defaultCenter": { "lat": 25.0495911, "lng": 121.5455781 },
-              "defaultZoom": 16
+              "padding": ".5rem",
+              "margin": ".2rem",
+              "backgroundColor": "white",
+              "borderRadius": "1rem",
+              "triggerColor": "teal",
+              "contentColor": "#555",
+              "items": [
+                {
+                  "trigger": "Is it accessible?",
+                  "content": "Yes. It adheres to the WAI-ARIA design pattern."
+                },
+                {
+                  "trigger": "Is it styled?",
+                  "content": "Yes. It comes with default styles that matches the other components' aesthetic."
+                },
+                {
+                  "trigger": "Is it animated?",
+                  "content": "Yes. It's animated by default, but you can disable it if you prefer."
+                }
+              ]
             }
           }
         ]
