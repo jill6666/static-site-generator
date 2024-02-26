@@ -19,7 +19,10 @@
         ]
       }
     },
-    { "type": "AspectRatio", "props": { "ratio": [16, 9], "imgUrl": "" } },
+    {
+      "type": "AspectRatio",
+      "props": { "ratio": [16, 9], "imgUrl": "" }
+    },
     { "type": "Box", "props": { "padding": "2px" } },
     { "type": "Button", "props": { "navigateTo": "/", "text": "Click me!" } },
     {
@@ -39,6 +42,18 @@
           { "imgUrl": "", "navigateTo": "/" },
           { "imgUrl": "", "navigateTo": "/" }
         ]
+      }
+    },
+    {
+      "type": "Map",
+      "props": {
+        "positions": [
+          { "lat": 25.0407284, "lng": 121.5484174 },
+          { "lat": 25.0533797, "lng": 121.5462562 },
+          { "lat": 25.0518654, "lng": 121.5448042 }
+        ],
+        "defaultCenter": { "lat": 25.0495911, "lng": 121.5455781 },
+        "defaultZoom": 16
       }
     },
     { "type": "Progress", "props": { "value": "33" } },

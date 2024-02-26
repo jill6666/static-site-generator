@@ -4,6 +4,7 @@ import Box from "./Box";
 import Button from "./Button";
 import Card from "./Card";
 import Carousel from "./Carousel";
+import Map from "./Map";
 import Tabs from "./Tabs";
 import Text from "./Text";
 import Progress from "./Progress";
@@ -15,6 +16,7 @@ const UIStore = {
   Button,
   Card,
   Carousel,
+  Map,
   Progress, // 進度條
   Tabs,
   Text,
