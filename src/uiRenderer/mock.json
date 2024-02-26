@@ -1,4 +1,5 @@
 {
+  "pageSettings": { "backgroundColor": "#eee" },
   "schema": [
     {
       "type": "Accordion",
