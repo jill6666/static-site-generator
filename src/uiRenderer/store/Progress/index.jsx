@@ -1,7 +1,18 @@
 import { useState, useEffect } from "react";
 import { Progress as ProgressMarkup } from "./markup";
 
-const Progress = ({ value }) => {
+const Progress = ({
+  value,
+  twStyle,
+  height,
+  width,
+  padding,
+  margin,
+  border,
+  borderRadius,
+  backgroundColor,
+  color,
+}) => {
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
@@ -9,6 +20,21 @@ const Progress = ({ value }) => {
     return () => clearTimeout(timer);
   }, []);
 
-  return <ProgressMarkup value={progress} className="w-full" />;
+  return (
+    <ProgressMarkup
+      value={progress}
+      className={"w-full " + twStyle}
+      color={color}
+      style={{
+        height,
+        width,
+        padding,
+        margin,
+        border,
+        borderRadius,
+        backgroundColor,
+      }}
+    />
+  );
 };
 export default Progress;

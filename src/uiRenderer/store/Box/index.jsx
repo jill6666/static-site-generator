@@ -3,32 +3,30 @@ import React, { Suspense } from "react";
 const RenderSchema = React.lazy(() => import("../../index"));
 
 const Box = ({
+  name,
   children,
-  customBackgroundSize,
-  backgroundSize,
-  otherBorder,
-  otherBorderRadius,
-  pos,
-  background,
-  backgroundImage,
-  position,
-  ...res
+  height,
+  width,
+  padding,
+  margin,
+  border,
+  borderRadius,
+  backgroundColor,
+  twStyle = "",
 }) => {
   return (
     <div
+      className={twStyle}
       style={{
-        ...res,
-        ...(background?.includes("linear")
-          ? { backgroundImage: background }
-          : { backgroundColor: background }),
-        ...(backgroundImage && {
-          backgroundImage: `url("${backgroundImage}")`,
-        }),
-        ...pos,
-        ...otherBorder,
-        ...otherBorderRadius,
-        position: position || "relative",
-        backgroundSize: customBackgroundSize || backgroundSize,
+        name,
+        height,
+        width,
+        padding,
+        margin,
+        border,
+        borderRadius,
+        backgroundColor,
+        overflow: "hidden",
       }}
     >
       <Suspense fallback={<></>}>

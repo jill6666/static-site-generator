@@ -1,15 +1,15 @@
 import FontSize from "./fontSize";
 
 const Typography = {
-  text: { type: "Text", label: "文字" },
-  color: { type: "Color", label: "顏色" },
+  text: { type: "Text", label: "Text Content" },
+  color: { type: "Color", label: "Color" },
   fontWeight: {
     type: "Range",
     min: 100,
     max: 900,
     step: 100,
     defaultValue: 400,
-    label: "字體粗細",
+    label: "Font Weight",
   },
   ...FontSize,
 };

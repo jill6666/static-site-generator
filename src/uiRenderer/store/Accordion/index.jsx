@@ -5,26 +5,50 @@ import {
   AccordionTrigger,
 } from "./markup";
 
-const Accordion = ({ items = [] }) => {
+const Accordion = ({
+  name,
+  height,
+  width,
+  padding,
+  margin,
+  border,
+  borderRadius,
+  backgroundColor,
+  items = [],
+  twStyle = "",
+  triggerColor,
+  contentColor,
+}) => {
   return (
-    <div>
-      <AccordionMarkup
-        type="multiple"
-        collapsible
-        style={{ background: "#fff" }}
-      >
-        {items.map((item, index) => (
-          <AccordionItem
-            key={index}
-            value={item?.trigger}
-            style={{ padding: "0 .5rem" }}
-          >
-            <AccordionTrigger>{item?.trigger}</AccordionTrigger>
-            <AccordionContent>{item?.content}</AccordionContent>
-          </AccordionItem>
-        ))}
-      </AccordionMarkup>
-    </div>
+    <AccordionMarkup
+      type="multiple"
+      collapsible
+      className={twStyle}
+      style={{
+        height,
+        width,
+        padding,
+        margin,
+        border,
+        borderRadius,
+        backgroundColor,
+      }}
+    >
+      {items.map((item, index) => (
+        <AccordionItem
+          key={index}
+          value={item?.trigger}
+          style={{ padding: "0 .5rem" }}
+        >
+          <AccordionTrigger style={{ color: triggerColor }}>
+            {item?.trigger}
+          </AccordionTrigger>
+          <AccordionContent style={{ color: contentColor }}>
+            {item?.content}
+          </AccordionContent>
+        </AccordionItem>
+      ))}
+    </AccordionMarkup>
   );
 };
 export default Accordion;

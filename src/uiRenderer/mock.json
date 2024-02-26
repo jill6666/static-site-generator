@@ -9,6 +9,12 @@
           {
             "type": "Accordion",
             "props": {
+              "padding": ".5rem",
+              "margin": ".2rem",
+              "backgroundColor": "white",
+              "borderRadius": "1rem",
+              "triggerColor": "teal",
+              "contentColor": "#555",
               "items": [
                 {
                   "trigger": "Is it accessible?",
@@ -29,23 +35,58 @@
       }
     },
     {
-      "type": "Tabs",
+      "type": "Box",
       "props": {
-        "items": [
-          { "tab": "account", "content": "Make changes to your account here." },
-          { "tab": "password", "content": "Change your password here." }
+        "padding": ".5rem",
+        "children": [
+          {
+            "type": "Tabs",
+            "props": {
+              "height": "200px",
+              "padding": ".5rem",
+              "contentColor": "pink",
+              "backgroundColor": "#333",
+              "borderRadius": "5px",
+              "items": [
+                {
+                  "tab": { "text": "Account", "fontSize": "14px" },
+                  "content": "Make changes to your account here."
+                },
+                {
+                  "tab": { "text": "Password", "fontSize": "14px" },
+                  "content": "Change your password here."
+                }
+              ],
+              "children": [
+                {
+                  "type": "AspectRatio",
+                  "props": {
+                    "ratio": [4, 3],
+                    "imgUrl": "https://cataas.com/cat/gif"
+                  }
+                },{
+                  "type": "AspectRatio",
+                  "props": {
+                    "ratio": [21, 9],
+                    "imgUrl": "https://cataas.com/cat"
+                  }
+                },{
+                  "type": "AspectRatio",
+                  "props": {
+                    "ratio": [21, 9],
+                    "imgUrl": "https://cataas.com/cat/gif"
+                  }
+                }
+              ]
+            }
+          }
         ]
       }
     },
     {
-      "type": "AspectRatio",
-      "props": { "ratio": [16, 9], "imgUrl": "https://cataas.com/cat/gif" }
-    },
-    {
       "type": "Box",
       "props": {
-        "padding": "2px",
-        "border": "1px solid #555",
+        "padding": ".5rem",
         "children": [
           {
             "type": "AspectRatio",
@@ -57,38 +98,113 @@
         ]
       }
     },
-    { "type": "Text", "props": { "text": "Hello, world" } },
-    { "type": "Progress", "props": { "value": "77" } },
     {
-      "type": "Card",
+      "type": "Box",
       "props": {
-        "title": "Card Title",
-        "description": "Card Description",
-        "cardContent": "Card Content"
-      }
-    },
-    { "type": "Button", "props": { "navigateTo": "/", "text": "Click me!" } },
-    {
-      "type": "Carousel",
-      "props": {
-        "orientation": "horizontal",
-        "items": [
-          { "imgUrl": "https://cataas.com/cat/gif", "navigateTo": "/" },
-          { "imgUrl": "https://cataas.com/cat/gif", "navigateTo": "/" },
-          { "imgUrl": "https://cataas.com/cat/gif", "navigateTo": "/" }
+        "padding": ".5rem",
+        "margin": "0 0 1rem 0",
+        "children": [
+          {
+            "type": "Text",
+            "props": {
+              "text": "Hello, world",
+              "fontSize": "32px",
+              "fontWeight": "700"
+            }
+          },
+          {
+            "type": "Progress",
+            "props": {
+              "value": "77",
+              "color": "teal",
+              "backgroundColor": "pink",
+              "height": "12px"
+            }
+          }
         ]
       }
     },
     {
-      "type": "Map",
+      "type": "Box",
       "props": {
-        "positions": [
-          { "lat": 25.0407284, "lng": 121.5484174 },
-          { "lat": 25.0533797, "lng": 121.5462562 },
-          { "lat": 25.0518654, "lng": 121.5448042 }
-        ],
-        "defaultCenter": { "lat": 25.0495911, "lng": 121.5455781 },
-        "defaultZoom": 16
+        "padding": ".5rem",
+        "margin": "0 0 1rem 0",
+        "children": [
+          {
+            "type": "Card",
+            "props": {
+              "title": "Card Title",
+              "description": "Card Description",
+              "children": [
+                {
+                  "type": "Box",
+                  "props": {
+                    "padding": "0 .5rem .5rem .5rem",
+                    "children": [
+                      {
+                        "type": "AspectRatio",
+                        "props": {
+                          "ratio": [21, 9],
+                          "imgUrl": "https://cataas.com/cat/gif"
+                        }
+                      },
+                      {
+                        "type": "Button",
+                        "props": {
+                          "navigateTo": "/",
+                          "text": "Click me!",
+                          "margin": ".5rem 0 0 0",
+                          "size": "lg",
+                          "variant": "secondary"
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "Box",
+      "props": {
+        "padding": ".5rem",
+        "margin": "0 0 1rem 0",
+        "children": [
+          {
+            "type": "Carousel",
+            "props": {
+              "orientation": "horizontal",
+              "items": [
+                { "imgUrl": "https://cataas.com/cat/gif", "navigateTo": "/" },
+                { "imgUrl": "https://cataas.com/cat/gif", "navigateTo": "/" },
+                { "imgUrl": "https://cataas.com/cat/gif", "navigateTo": "/" }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "Box",
+      "props": {
+        "padding": ".5rem",
+        "children": [
+          {
+            "type": "Map",
+            "props": {
+              "positions": [
+                { "lat": 25.0407284, "lng": 121.5484174 },
+                { "lat": 25.0533797, "lng": 121.5462562 },
+                { "lat": 25.0518654, "lng": 121.5448042 }
+              ],
+              "defaultCenter": { "lat": 25.0495911, "lng": 121.5455781 },
+              "defaultZoom": 16
+            }
+          }
+        ]
       }
     }
   ]

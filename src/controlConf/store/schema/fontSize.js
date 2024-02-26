@@ -1,7 +1,7 @@
 const FontSize = {
   fontSize: {
     type: "Range",
-    label: "文字尺寸",
+    label: "Font Size",
     min: 12,
     max: 42,
   },

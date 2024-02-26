@@ -2,31 +2,33 @@ import { BoxModel, Nameable, Size } from "../store/schema";
 
 const schema = {
   ...Nameable,
-  content: { type: "Text", label: "Button Text" },
+  text: { type: "Text", label: "Button Text" },
+  twStyle: { type: "Text", label: "Button Style (tailwind)" },
+  variant: {
+    type: "Radio",
+    label: "",
+    control: [
+      { label: "Default", value: "default" },
+      { label: "Destructive", value: "destructive" },
+      { label: "Outline", value: "outline" },
+      { label: "Secondary", value: "secondary" },
+      { label: "Ghost", value: "ghost" },
+      { label: "Link", value: "link" },
+    ],
+  },
+  size: {
+    type: "Radio",
+    label: "",
+    control: [
+      { label: "Default", value: "default" },
+      { label: "Small", value: "sm" },
+      { label: "Large", value: "lg" },
+    ],
+  },
   color: { type: "Color", label: "Text Color" },
   background: { type: "Color", label: "Button Background Color" },
   ...Size,
   ...BoxModel,
-  otherBorder: {
-    type: "Group",
-    label: "Setting for Border",
-    control: {
-      borderLeft: { type: "Border", label: "Border Left" },
-      borderRight: { type: "Border", label: "Border Right" },
-      borderTop: { type: "Border", label: "Border Top" },
-      borderBottom: { type: "Border", label: "Border Bottom" },
-    },
-  },
-  otherBorderRadius: {
-    type: "Group",
-    label: "Setting for Border Radius",
-    control: {
-      borderTopLeftRadius: { type: "Size", label: "Left Top" },
-      borderTopRightRadius: { type: "Size", label: "Right Top" },
-      borderBottomRightRadius: { type: "Size", label: "Right Bottom" },
-      borderBottomLeftRadius: { type: "Size", label: "Left Bottom" },
-    },
-  },
 };
 
 export default schema;

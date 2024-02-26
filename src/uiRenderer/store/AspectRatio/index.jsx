@@ -1,18 +1,40 @@
 import { AspectRatio as AspectRatioMarkup } from "./markup";
 
-const AspectRatio = ({ ratio, imgUrl = "" }) => {
+const AspectRatio = ({
+  name,
+  height,
+  width,
+  padding,
+  margin,
+  border,
+  borderRadius,
+  backgroundColor,
+  ratio,
+  imgUrl = "",
+  twStyle = "",
+}) => {
   const convertRatio = (ratio?.[0] || 16) / (ratio?.[1] || 9);
 
   return (
-    <div>
-      <AspectRatioMarkup ratio={convertRatio}>
-        <img
-          src={imgUrl}
-          alt="Image"
-          className="rounded-md object-cover w-full h-full"
-        />
-      </AspectRatioMarkup>
-    </div>
+    <AspectRatioMarkup
+      ratio={convertRatio}
+      style={{
+        height,
+        width,
+        padding,
+        margin,
+        border,
+        borderRadius,
+        backgroundColor,
+      }}
+      className={twStyle}
+    >
+      <img
+        src={imgUrl}
+        alt="Image"
+        className="rounded-md object-cover w-full h-full"
+      />
+    </AspectRatioMarkup>
   );
 };
 export default AspectRatio;

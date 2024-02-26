@@ -4,10 +4,52 @@ import {
   Marker,
 } from "@vis.gl/react-google-maps";
 
-const Map = ({ positions = [], defaultCenter, defaultZoom }) => {
+const Map = ({
+  positions = [],
+  defaultCenter,
+  defaultZoom,
+  twStyle,
+  height = "300px",
+  width = "100%",
+  padding,
+  margin,
+  border,
+  borderRadius,
+  waterColor = "#BBE2EC",
+  landscapeColor = "#CDFADB",
+}) => {
+  const mapStyles = [
+    {
+      featureType: "water",
+      elementType: "geometry",
+      stylers: [{ color: waterColor }],
+    },
+    {
+      featureType: "landscape",
+      elementType: "geometry",
+      stylers: [{ color: landscapeColor }],
+    },
+    {
+      // 商家標示
+      featureType: "poi",
+      elementType: "labels",
+      stylers: [{ visibility: "off" }],
+    },
+  ];
+
   return (
     <APIProvider apiKey={process.env.REACT_APP_API_KEY}>
-      <div style={{ width: "100%", height: "300px" }}>
+      <div
+        style={{
+          height,
+          width,
+          padding,
+          margin,
+          border,
+          borderRadius,
+        }}
+        className={twStyle}
+      >
         <MapMarkup
           defaultCenter={defaultCenter}
           defaultZoom={defaultZoom}
@@ -28,22 +70,3 @@ const Map = ({ positions = [], defaultCenter, defaultZoom }) => {
 };
 
 export default Map;
-
-const mapStyles = [
-  {
-    featureType: "water",
-    elementType: "geometry",
-    stylers: [{ color: "#BBE2EC" }],
-  },
-  {
-    featureType: "landscape",
-    elementType: "geometry",
-    stylers: [{ color: "#CDFADB" }],
-  },
-  {
-    // 商家標示
-    featureType: "poi",
-    elementType: "labels",
-    stylers: [{ visibility: "off" }],
-  },
-];
