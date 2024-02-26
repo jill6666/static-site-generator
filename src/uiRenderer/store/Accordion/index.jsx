@@ -1,14 +1,18 @@
 import {
-  Accordion,
+  Accordion as AccordionMarkup,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "./markup";
 
-const MyAccordion = ({ items = [] }) => {
+const Accordion = ({ items = [] }) => {
   return (
     <div>
-      <Accordion type="multiple" collapsible style={{ background: "#fff" }}>
+      <AccordionMarkup
+        type="multiple"
+        collapsible
+        style={{ background: "#fff" }}
+      >
         {items.map((item, index) => (
           <AccordionItem
             key={index}
@@ -19,8 +23,8 @@ const MyAccordion = ({ items = [] }) => {
             <AccordionContent>{item?.content}</AccordionContent>
           </AccordionItem>
         ))}
-      </Accordion>
+      </AccordionMarkup>
     </div>
   );
 };
-export default MyAccordion;
+export default Accordion;

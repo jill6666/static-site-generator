@@ -29,6 +29,15 @@
       }
     },
     {
+      "type": "Tabs",
+      "props": {
+        "items": [
+          { "tab": "account", "content": "Make changes to your account here." },
+          { "tab": "password", "content": "Change your password here." }
+        ]
+      }
+    },
+    {
       "type": "AspectRatio",
       "props": { "ratio": [16, 9], "imgUrl": "https://cataas.com/cat/gif" }
     },
@@ -48,7 +57,8 @@
         ]
       }
     },
-    { "type": "Button", "props": { "navigateTo": "/", "text": "Click me!" } },
+    { "type": "Text", "props": { "text": "Hello, world" } },
+    { "type": "Progress", "props": { "value": "77" } },
     {
       "type": "Card",
       "props": {
@@ -57,10 +67,11 @@
         "cardContent": "Card Content"
       }
     },
+    { "type": "Button", "props": { "navigateTo": "/", "text": "Click me!" } },
     {
       "type": "Carousel",
       "props": {
-        "orientation": "vertical",
+        "orientation": "horizontal",
         "items": [
           { "imgUrl": "https://cataas.com/cat/gif", "navigateTo": "/" },
           { "imgUrl": "https://cataas.com/cat/gif", "navigateTo": "/" },
@@ -79,17 +90,6 @@
         "defaultCenter": { "lat": 25.0495911, "lng": 121.5455781 },
         "defaultZoom": 16
       }
-    },
-    { "type": "Progress", "props": { "value": "33" } },
-    {
-      "type": "Tabs",
-      "props": {
-        "items": [
-          { "tab": "account", "content": "Make changes to your account here." },
-          { "tab": "password", "content": "Change your password here." }
-        ]
-      }
-    },
-    { "type": "Text", "props": { "text": "Hello, world" } }
+    }
   ]
 }

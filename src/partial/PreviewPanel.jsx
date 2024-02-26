@@ -10,7 +10,7 @@ const PreviewPanel = ({
 
   return (
     <Suspense fallback={<>OOPS! Something went wrong</>}>
-      <div className="h-full" style={{ backgroundColor }}>
+      <div className="h-full overflow-scroll" style={{ backgroundColor }}>
         {RenderSchema({ schema })}
       </div>
     </Suspense>

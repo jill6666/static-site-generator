@@ -1,18 +1,18 @@
-import { AspectRatio } from "./markup";
+import { AspectRatio as AspectRatioMarkup } from "./markup";
 
-const MyAspectRatio = ({ ratio, imgUrl = "" }) => {
+const AspectRatio = ({ ratio, imgUrl = "" }) => {
   const convertRatio = (ratio?.[0] || 16) / (ratio?.[1] || 9);
 
   return (
     <div>
-      <AspectRatio ratio={convertRatio}>
+      <AspectRatioMarkup ratio={convertRatio}>
         <img
           src={imgUrl}
           alt="Image"
           className="rounded-md object-cover w-full h-full"
         />
-      </AspectRatio>
+      </AspectRatioMarkup>
     </div>
   );
 };
-export default MyAspectRatio;
+export default AspectRatio;
