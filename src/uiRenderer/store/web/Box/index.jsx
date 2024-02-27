@@ -1,6 +1,6 @@
 import React, { Suspense } from "react";
 
-const RenderSchema = React.lazy(() => import("../../index"));
+const RenderSchema = React.lazy(() => import("../../../index"));
 
 const Box = ({
   name,
@@ -11,7 +11,7 @@ const Box = ({
   margin,
   border,
   borderRadius,
-  backgroundColor,
+  background,
   twStyle = "",
 }) => {
   return (
@@ -25,7 +25,7 @@ const Box = ({
         margin,
         border,
         borderRadius,
-        backgroundColor,
+        background,
         overflow: "hidden",
       }}
     >

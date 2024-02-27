@@ -1,6 +1,6 @@
 const Size = {
-  height: { type: "Size", label: "高度" },
-  width: { type: "Size", label: "寬度" },
+  height: { type: "Size", label: "Height" },
+  width: { type: "Size", label: "Width" },
 };
 
 export default Size;

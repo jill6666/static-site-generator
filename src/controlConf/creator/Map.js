@@ -4,21 +4,21 @@ const schema = {
   ...Nameable,
   ...Size,
   ...BoxModel,
-  twStyle: { type: "Text", label: "Button Style (tailwind)" },
+  twStyle: { type: "Input", label: "Style (tailwind)" },
   positions: {
     type: "Repeater",
     label: "Positions",
     control: {
-      lat: { type: "Text", label: "Position Lat" },
-      lng: { type: "Text", label: "Position Lng" },
+      lat: { type: "Input", label: "Position Lat" },
+      lng: { type: "Input", label: "Position Lng" },
     },
   },
   defaultCenter: {
     type: "Group",
     label: "Center",
     control: {
-      lat: { type: "Text", label: "Position Lat" },
-      lng: { type: "Text", label: "Position Lng" },
+      lat: { type: "Input", label: "Position Lat" },
+      lng: { type: "Input", label: "Position Lng" },
     },
   },
   defaultZoom: { tyep: "Size", label: "Zoom" },

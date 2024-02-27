@@ -1,7 +1,7 @@
 const JustifyContent = {
   justifyContent: {
-    type: "RadioButton",
-    label: "位置",
+    type: "Radio",
+    label: "Justify Content",
     layout: { col: 3 },
     control: [
       {

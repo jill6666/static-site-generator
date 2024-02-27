@@ -4,7 +4,7 @@ const schema = {
   ...Nameable,
   ...Size,
   ...BoxModel,
-  twStyle: { type: "Text", label: "Button Style (tailwind)" },
+  twStyle: { type: "Input", label: "Style (tailwind)" },
   orientation: {
     type: "Radio",
     label: "Orientation",

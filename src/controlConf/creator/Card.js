@@ -3,12 +3,12 @@ import { BoxModel, Nameable, Size } from "../store/schema";
 const schema = {
   ...Nameable,
   ...Size,
-  title: { type: "Text", label: "Card Title" },
-  description: { type: "Text", label: "Card Description" },
-  cardContent: { type: "Text", label: "Card Content" },
+  title: { type: "Input", label: "Card Title" },
+  description: { type: "Input", label: "Card Description" },
+  cardContent: { type: "Input", label: "Card Content" },
   titleColor: { type: "Color", label: "Text Color" },
   descriptionColor: { type: "Color", label: "Text Color" },
-  twStyle: { type: "Text", label: "Card Style (tailwind)" },
+  twStyle: { type: "Input", label: "Card Style (tailwind)" },
   ...BoxModel,
   backgroundColor: { type: "Color", label: "Background Color" },
 };

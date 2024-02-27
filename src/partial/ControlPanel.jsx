@@ -2,11 +2,20 @@ import redux from "../data/redux";
 import { useSelector } from "react-redux";
 import { pageSelector } from "../data/pageSlice";
 import getUpdateSchema from "../utils/getUpdateSchema";
+import { useFormik } from "formik";
 
-const ControlPanel = () => {
+const ControlPanel = ({ onSave }) => {
   const controlId = useSelector(pageSelector.controlId);
   const schema = useSelector(pageSelector.schema);
   const target = deepFindObjectById(controlId, schema);
+  const formik = useFormik({
+    initialValues: {},
+    onSubmit: (values) => {
+      console.log("onSubmit: " + JSON.stringify(values));
+      const newValues = values;
+      onSave && onSave(newValues);
+    },
+  });
 
   const addBorderToBox = (id) => {
     const isBox = target?.type === "Box";
@@ -19,17 +28,18 @@ const ControlPanel = () => {
   };
 
   return (
-    <>
-      <button onClick={() => addBorderToBox(controlId)} className="border p-2">
-        Add Border to Box
-      </button>
-      <br />
-      Element ID:{controlId}
-      <br />
-      Type: {target?.type}
-      <br />
-      Props: {JSON.stringify(target?.props)}
-    </>
+    <div className="h-full overflow-hidden">
+      <div className="flex justify-between items-center p-2 border-b">
+        <div className="border border-primary text-primary text-center px-2 py-1 rounded-md h-full">
+          {target?.type}
+        </div>
+        <p>Element ID: {controlId || "-"}</p>
+      </div>
+      <form
+        onSubmit={formik.handleSubmit}
+        className="h-full overflow-scroll bg-gray-100"
+      ></form>
+    </div>
   );
 };
 export default ControlPanel;

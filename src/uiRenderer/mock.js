@@ -42,7 +42,7 @@ const data = {
             props: {
               value: "77",
               color: "teal",
-              backgroundColor: "pink",
+              background: "pink",
               height: "12px",
             },
           },
@@ -63,7 +63,7 @@ const data = {
               height: "200px",
               padding: ".5rem",
               contentColor: "pink",
-              backgroundColor: "#333",
+              background: "#333",
               borderRadius: "5px",
               items: [
                 {
@@ -164,7 +164,7 @@ const data = {
             props: {
               padding: ".5rem",
               margin: ".2rem",
-              backgroundColor: "white",
+              background: "white",
               borderRadius: "1rem",
               triggerColor: "teal",
               contentColor: "#555",

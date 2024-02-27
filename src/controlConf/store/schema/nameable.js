@@ -1,5 +1,5 @@
 const Nameable = {
-  name: { type: "Text", label: "名稱" },
+  name: { type: "Input", label: "Element Name" },
 };
 
 export default Nameable;

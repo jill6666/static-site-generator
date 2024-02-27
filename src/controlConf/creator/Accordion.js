@@ -4,16 +4,15 @@ const schema = {
   ...Nameable,
   ...Size,
   ...BoxModel,
-  twStyle: { type: "Text", label: "Button Style (tailwind)" },
-  backgroundColor: { type: "Color", label: "Background Color" },
+  twStyle: { type: "Input", label: "Style (tailwind)" },
   triggerColor: { type: "Color", label: "Trigger Color" },
   contentColor: { type: "Color", label: "Content Color" },
   items: {
     type: "Repeater",
     label: "Accordion Content",
     control: {
-      trigger: { type: "Text", label: "Trigger" },
-      content: { type: "Text", label: "Content" },
+      trigger: { type: "Input", label: "Trigger" },
+      content: { type: "Input", label: "Content" },
     },
   },
 };

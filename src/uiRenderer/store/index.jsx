@@ -1,13 +1,13 @@
-import Accordion from "./Accordion";
-import AspectRatio from "./AspectRatio";
-import Box from "./Box";
-import Button from "./Button";
-import Card from "./Card";
-import Carousel from "./Carousel";
-import Map from "./Map";
-import Tabs from "./Tabs";
-import Text from "./Text";
-import Progress from "./Progress";
+import Accordion from "./web/Accordion";
+import AspectRatio from "./web/AspectRatio";
+import Box from "./web/Box";
+import Button from "./web/Button";
+import Card from "./web/Card";
+import Carousel from "./web/Carousel";
+import Map from "./web/Map";
+import Tabs from "./web/Tabs";
+import Text from "./web/Text";
+import Progress from "./web/Progress";
 
 const UIStore = {
   Accordion, // 手風琴，收合 menu
@@ -21,5 +21,6 @@ const UIStore = {
   Tabs,
   Text,
 };
+const FormStore = {};
 
-export default UIStore;
+export { UIStore, FormStore };

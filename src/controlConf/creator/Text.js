@@ -3,8 +3,8 @@ import { Nameable, Typography } from "../store/schema";
 const schema = {
   ...Nameable,
   ...Typography,
-  text: { type: "Text", label: "Content" },
-  twStyle: { type: "Text", label: "Button Style (tailwind)" },
+  text: { type: "Input", label: "Content" },
+  twStyle: { type: "Input", label: "Style (tailwind)" },
   textAlign: {
     type: "Radio",
     label: "Text Alignment",

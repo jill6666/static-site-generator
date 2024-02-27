@@ -4,8 +4,7 @@ const schema = {
   ...Nameable,
   ...Size,
   ...BoxModel,
-  backgroundColor: { type: "Color", label: "Background Color" },
-  twStyle: { type: "Text", label: "Button Style (tailwind)" },
+  twStyle: { type: "Input", label: "Style (tailwind)" },
   tabColor: { type: "Color", label: "Tab Color" },
   contentColor: { type: "Color", label: "Content Color" },
   items: {
@@ -13,7 +12,7 @@ const schema = {
     label: "Tabs",
     control: {
       tab: { ...Typography },
-      content: { type: "Text", label: "Content" },
+      content: { type: "Input", label: "Content" },
     },
   },
 };

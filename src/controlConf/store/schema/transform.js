@@ -1,8 +1,5 @@
 const Transform = {
-  rotate: {
-    type: "Range",
-    label: "旋轉",
-  },
+  rotate: { type: "Range", label: "Rotate" },
 };
 
 export default Transform;

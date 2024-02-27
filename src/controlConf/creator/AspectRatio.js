@@ -2,11 +2,11 @@ import { Nameable } from "../store/schema";
 
 const schema = {
   ...Nameable,
-  twStyle: { type: "Text", label: "Button Style (tailwind)" },
+  twStyle: { type: "Input", label: "Style (tailwind)" },
   imgUrl: { type: "Image", label: "Image" },
   ratio: {
     type: "Radio",
-    label: "Setting for Ratio",
+    label: "Ratio",
     control: [
       { label: "21:9", value: [21, 9] },
       { label: "16:9", value: [16, 9] },

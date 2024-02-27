@@ -6,7 +6,7 @@ import {
   TabsTrigger,
 } from "./markup";
 
-const RenderSchema = React.lazy(() => import("../../index"));
+const RenderSchema = React.lazy(() => import("../../../index"));
 
 const Tabs = ({
   items = [],
@@ -15,7 +15,7 @@ const Tabs = ({
   margin,
   border,
   borderRadius,
-  backgroundColor,
+  background,
   tabColor,
   contentColor,
   children,
@@ -49,7 +49,7 @@ const Tabs = ({
             height: "auto",
             padding,
             color: contentColor,
-            backgroundColor,
+            background,
             border,
             borderRadius,
           }}

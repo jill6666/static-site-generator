@@ -1,5 +1,5 @@
 import React, { createElement } from "react";
-import UIStore from "./store";
+import { UIStore } from "./store";
 import redux from "../data/redux";
 
 const RenderSchema = ({ schema, isClient }) => {

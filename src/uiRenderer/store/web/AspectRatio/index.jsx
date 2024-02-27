@@ -8,7 +8,7 @@ const AspectRatio = ({
   margin,
   border,
   borderRadius,
-  backgroundColor,
+  background,
   ratio,
   imgUrl = "",
   twStyle = "",
@@ -25,7 +25,7 @@ const AspectRatio = ({
         margin,
         border,
         borderRadius,
-        backgroundColor,
+        background,
       }}
       className={twStyle}
     >

@@ -1,8 +1,8 @@
 const BoxModel = {
-  padding: { type: "Distance", label: "內間距" },
-  margin: { type: "Distance", label: "外間距" },
-  border: { type: "Border", label: "邊線" },
-  borderRadius: { type: "Size", label: "圓角" },
+  padding: { type: "Distance", label: "Padding" },
+  margin: { type: "Distance", label: "Margin" },
+  border: { type: "Border", label: "Border" },
+  borderRadius: { type: "Size", label: "Border Radius" },
 };
 
 export default BoxModel;

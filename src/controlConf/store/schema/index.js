@@ -1,12 +1,10 @@
 export * as Effect from "./effect";
 export * as ImageControl from "../control/imageControl";
-export * as BackgroundGradientGroup from "./backgroundGradientGroup";
+export * as BackgroundGroup from "./backgroundGroup";
 export * as Size from "./size";
 export * as Nameable from "./nameable";
 export * as BoxModel from "./boxModel";
 export * as JustifyContent from "./justifyContent";
-export * as Linkable from "./linkable";
 export * as Transform from "./transform";
-export * as BackgroundGroup from "./backgroundGroup";
 export * as FontSize from "./fontSize";
 export * as Typography from "./typography";

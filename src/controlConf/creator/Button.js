@@ -2,11 +2,11 @@ import { BoxModel, Nameable, Size } from "../store/schema";
 
 const schema = {
   ...Nameable,
-  text: { type: "Text", label: "Button Text" },
-  twStyle: { type: "Text", label: "Button Style (tailwind)" },
+  text: { type: "Input", label: "Text" },
+  twStyle: { type: "Input", label: "Style (tailwind)" },
   variant: {
     type: "Radio",
-    label: "",
+    label: "Style",
     control: [
       { label: "Default", value: "default" },
       { label: "Destructive", value: "destructive" },
@@ -18,7 +18,7 @@ const schema = {
   },
   size: {
     type: "Radio",
-    label: "",
+    label: "Size",
     control: [
       { label: "Default", value: "default" },
       { label: "Small", value: "sm" },
@@ -26,7 +26,7 @@ const schema = {
     ],
   },
   color: { type: "Color", label: "Text Color" },
-  background: { type: "Color", label: "Button Background Color" },
+  background: { type: "Color", label: "Background Color" },
   ...Size,
   ...BoxModel,
 };

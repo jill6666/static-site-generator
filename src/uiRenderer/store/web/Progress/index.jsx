@@ -10,7 +10,7 @@ const Progress = ({
   margin,
   border,
   borderRadius,
-  backgroundColor,
+  background,
   color,
 }) => {
   const [progress, setProgress] = useState(0);
@@ -32,7 +32,7 @@ const Progress = ({
         margin,
         border,
         borderRadius,
-        backgroundColor,
+        background,
       }}
     />
   );

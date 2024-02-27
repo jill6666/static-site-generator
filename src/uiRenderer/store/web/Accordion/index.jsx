@@ -13,7 +13,7 @@ const Accordion = ({
   margin,
   border,
   borderRadius,
-  backgroundColor,
+  background,
   items = [],
   twStyle = "",
   triggerColor,
@@ -30,7 +30,7 @@ const Accordion = ({
         margin,
         border,
         borderRadius,
-        backgroundColor,
+        background,
       }}
     >
       {items.map((item, index) => (

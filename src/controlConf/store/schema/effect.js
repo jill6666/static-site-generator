@@ -1,5 +1,5 @@
 const Effect = {
-  boxShadow: { type: "Text", label: "陰影" },
+  boxShadow: { type: "Input", label: "Box Shadow" },
 };
 
 export default Effect;

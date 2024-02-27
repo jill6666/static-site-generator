@@ -6,7 +6,7 @@ import {
   CardTitle,
 } from "./markup";
 
-const RenderSchema = React.lazy(() => import("../../index"));
+const RenderSchema = React.lazy(() => import("../../../index"));
 
 const Card = ({
   name,
@@ -22,7 +22,7 @@ const Card = ({
   margin,
   border,
   borderRadius,
-  backgroundColor,
+  background,
 }) => {
   return (
     <CardMarkup
@@ -34,7 +34,7 @@ const Card = ({
         margin,
         border,
         borderRadius,
-        backgroundColor,
+        background,
       }}
     >
       {(description || title) && (
