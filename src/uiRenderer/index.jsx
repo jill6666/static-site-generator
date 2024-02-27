@@ -1,8 +1,7 @@
-import React, { createElement, useEffect } from "react";
+import React, { createElement } from "react";
 import { UIStore, FormStore } from "./store";
 import redux from "../data/redux";
-import { CloseOutlined } from "@ant-design/icons";
-import { Button, Form, Input, Space, Typography } from "antd";
+import { Form, Typography } from "antd";
 
 const RenderSchema = ({ schema, isClient }) => {
   const ResultMarkups = [];
@@ -49,6 +48,8 @@ const RenderForm = ({ id, schema, initialValues = {} }) => {
         const type = value?.type;
         const Element = FormStore?.[type];
         if (!Element) return null;
+
+        form.setFieldValue(`${id}-${key}`, initialValues?.[key]);
 
         const combinedProps = { ...value, name: `${id}-${key}` };
         return <Element {...combinedProps} />;

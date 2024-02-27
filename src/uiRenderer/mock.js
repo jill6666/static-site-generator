@@ -112,10 +112,10 @@ const data = {
                     padding: "0 .5rem .5rem .5rem",
                     children: [
                       {
-                        name: "card as",
                         id: "41101",
                         type: "AspectRatio",
                         props: {
+                          name: "card as",
                           ratio: [21, 9],
                           imgUrl: "https://cataas.com/cat/gif",
                         },
