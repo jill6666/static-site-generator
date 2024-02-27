@@ -23,7 +23,7 @@ const Edit = () => {
           </button>
         }
       />
-      <div div className="pt-[4rem]">
+      <div className="pt-[4rem]">
         <div className="w-full flex border p-0 m-0 h-[calc(100vh-100px)]">
           <div className="w-[20%]">
             <AssetsPanel />

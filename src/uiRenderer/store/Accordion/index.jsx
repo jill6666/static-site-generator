@@ -22,7 +22,6 @@ const Accordion = ({
   return (
     <AccordionMarkup
       type="multiple"
-      collapsible
       className={twStyle}
       style={{
         height,

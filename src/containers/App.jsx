@@ -26,7 +26,7 @@ const App = () => {
       <div className="pt-[4rem]">
         <div className="flex gap-4 p-4">
           {mockData.map((item) => (
-            <Card {...item} />
+            <Card key={item?.pageId} {...item} />
           ))}
         </div>
       </div>

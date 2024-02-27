@@ -29,6 +29,7 @@ const Tabs = ({
       <TabsList className="grid w-full grid-cols-2">
         {items.map((item) => (
           <TabsTrigger
+            key={item?.tab?.text}
             style={{
               color: tabColor || item?.tab?.color,
               fontWeight: item?.tab?.fontWeight,
@@ -42,6 +43,7 @@ const Tabs = ({
       </TabsList>
       {items.map((item, index) => (
         <TabsContent
+          key={item?.tab?.text}
           value={item?.tab?.text}
           style={{
             height: "auto",
@@ -55,7 +57,7 @@ const Tabs = ({
           {!children?.[index] ? (
             item?.content
           ) : (
-            <Suspense fallback={<></>}>
+            <Suspense fallback={<div>OOPS! Something went wrong.</div>}>
               <RenderSchema schema={[children?.[index]]} />
             </Suspense>
           )}
