@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   Tree,
   getBackendOptions,
@@ -6,22 +6,32 @@ import {
 } from "@minoru/react-dnd-treeview";
 import { DndProvider } from "react-dnd";
 import { ChevronDownIcon, ChevronRightIcon } from "@radix-ui/react-icons";
+import isArray from "lodash/isArray";
 
-const Dnd = ({ data, active, onClick }) => {
-  const [treeData, setTreeData] = useState(data);
-  const handleDrop = (newTreeData) => setTreeData(newTreeData);
+const Dnd = ({ data, active, onClick, onDrop }) => {
+  const [treeData, setTreeData] = useState([]);
+
+  useEffect(() => {
+    isArray(data) && setTreeData(data);
+  }, [data]);
+
+  const handleDrop = (newTreeData, opts) => {
+    setTreeData(newTreeData);
+    onDrop && onDrop(newTreeData, opts);
+  };
+
   const handleOnClick = (id) => {
     onClick && onClick({ id });
   };
   return (
     <DndProvider backend={MultiBackend} options={getBackendOptions()}>
       <Tree
+        initialOpen={true}
         sort={false}
         tree={treeData}
+        enableAnimateExpand={true}
         rootId={0}
         onDrop={handleDrop}
-        enableAnimateExpand={true}
-        initialOpen={true}
         render={(node, { depth, isOpen, onToggle }) => {
           const droppable = node?.droppable;
           const isActive = node?.id === active;

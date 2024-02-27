@@ -4,6 +4,7 @@ import TreeMap from "../components/TreeMap";
 import TabsMarkup from "../uiRenderer/store/web/Tabs/markup";
 import convertSchemaToTree from "../utils/convertSchemaToTree";
 import flashElement from "../utils/flashElement";
+import getNewSchemaByDragOpt from "../utils/getNewSchemaByDragOpt";
 import redux from "../data/redux";
 
 const AssetsPanel = () => {
@@ -16,12 +17,22 @@ const AssetsPanel = () => {
     redux.updateControlId(id);
     flashElement(block);
   };
+  const treeMapOnDrop = (newTreeData, opt) => {
+    const newSchema = getNewSchemaByDragOpt(pageSchema, opt, newTreeData);
+
+    redux.updateSchema(newSchema);
+  };
 
   const tabItems = [
     {
       tab: "Current",
       content: (
-        <TreeMap data={treeData} active={controlId} onClick={treeMapOnClick} />
+        <TreeMap
+          data={treeData}
+          active={controlId}
+          onClick={treeMapOnClick}
+          onDrop={treeMapOnDrop}
+        />
       ),
     },
     { tab: "All", content: <>Asset</> },
