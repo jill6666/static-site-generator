@@ -19,22 +19,21 @@ const Edit = () => {
 
   useEffect(() => {
     const init = () => {
+      redux.updateControlId(mock.schema?.[0]?.id);
       redux.updateSchema(mock.schema);
     };
 
     init();
   }, []);
 
-  const handleOnSave = () => {
-    navigate("/");
-  };
-  const PreviewInTab = () => {};
+  const handleOnSave = () => {};
+  const handlePreview = () => {};
 
   const addsOnButtons = [
     {
       text: "Preview in Tab",
       value: "inTab",
-      onClick: PreviewInTab,
+      onClick: handlePreview,
       variant: "link",
     },
     { text: "Save", value: "save", onClick: handleOnSave, variant: "default" },

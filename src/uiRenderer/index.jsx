@@ -59,14 +59,6 @@ const RenderForm = ({ id, schema, initialValues = {}, onChange }) => {
         const combinedProps = { ...value, name: `${key}` };
         return <Element {...combinedProps} />;
       })}
-
-      <Form.Item noStyle shouldUpdate>
-        {() => (
-          <Typography>
-            <pre>{JSON.stringify(form.getFieldsValue(), null, 2)}</pre>
-          </Typography>
-        )}
-      </Form.Item>
     </Form>
   );
 };

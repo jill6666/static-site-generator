@@ -69,7 +69,7 @@ const Dnd = ({ data, active, onClick, onDrop }) => {
               };
 
               return (
-                <div className="w-full flex items-center py-4" {...props}>
+                <div className="w-full flex items-center py-1" {...props}>
                   {droppable && (
                     <span className="pr-2" onClick={onToggle}>
                       {isOpen ? <ChevronDownIcon /> : <ChevronRightIcon />}
