@@ -18,7 +18,7 @@ import Radio from "./form/Radio";
 import Range from "./form/Range";
 import Size from "./form/Size";
 
-import withField from "../../utils/withField";
+import withField from "../utils/withField";
 
 export const UIStore = {
   Accordion, // 手風琴，收合 menu
