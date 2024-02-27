@@ -2,11 +2,8 @@ import { Suspense } from "react";
 import mock from "../uiRenderer/mock.json";
 import RenderSchema from "../uiRenderer";
 
-const PreviewPanel = ({
-  schema = mock.schema,
-  pageSettings = mock.pageSettings,
-}) => {
-  const backgroundColor = pageSettings?.backgroundColor || "";
+const PreviewPanel = ({ schema = mock.schema, settings = mock.settings }) => {
+  const backgroundColor = settings?.backgroundColor || "";
 
   return (
     <Suspense fallback={<>OOPS! Something went wrong</>}>

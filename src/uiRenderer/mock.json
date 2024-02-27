@@ -1,5 +1,5 @@
 {
-  "pageSettings": { "backgroundColor": "#eee" },
+  "settings": { "backgroundColor": "#eee" },
   "schema": [
     {
       "type": "Box",
