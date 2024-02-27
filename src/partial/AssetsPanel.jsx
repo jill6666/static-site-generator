@@ -3,6 +3,7 @@ import { pageSelector } from "../data/pageSlice";
 import TreeMap from "../components/TreeMap";
 import TabsMarkup from "../uiRenderer/store/web/Tabs/markup";
 import convertSchemaToTree from "../utils/convertSchemaToTree";
+import flashElement from "../utils/flashElement";
 import redux from "../data/redux";
 
 const AssetsPanel = () => {
@@ -10,15 +11,17 @@ const AssetsPanel = () => {
   const pageSchema = useSelector(pageSelector.schema);
   const treeData = convertSchemaToTree(pageSchema);
 
+  const treeMapOnClick = ({ id }) => {
+    const block = document.querySelector(`div[data-id="${id}"]`);
+    redux.updateControlId(id);
+    flashElement(block);
+  };
+
   const tabItems = [
     {
       tab: "Current",
       content: (
-        <TreeMap
-          data={treeData}
-          active={controlId}
-          onClick={({ id }) => redux.updateControlId(id)}
-        />
+        <TreeMap data={treeData} active={controlId} onClick={treeMapOnClick} />
       ),
     },
     { tab: "All", content: <>Asset</> },
