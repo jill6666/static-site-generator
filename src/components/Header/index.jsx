@@ -1,5 +1,6 @@
 import React from "react";
 import { useNavigate, useLocation } from "react-router-dom";
+import { ChevronLeftIcon, CubeIcon } from "@radix-ui/react-icons";
 
 const Header = ({ extra }) => {
   const navigate = useNavigate();
@@ -22,10 +23,10 @@ const Header = ({ extra }) => {
     >
       <a
         onClick={handleScroll}
-        className={`cursor-pointer text-xl tracking-widest`}
+        className={`cursor-pointer text-xl tracking-widest flex items-center`}
       >
-        {showBackkey ? "< " : "👁️‍🗨️ "}
-        CUBE
+        {showBackkey ? <ChevronLeftIcon /> : <CubeIcon />}
+        <p className="ml-2">CUBE</p>
       </a>
       {extra}
     </nav>

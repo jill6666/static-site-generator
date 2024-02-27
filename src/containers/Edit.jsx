@@ -1,12 +1,23 @@
+import { useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import Header from "../components/Header";
 import AssetsPanel from "../partial/AssetsPanel";
 import ControlPanel from "../partial/ControlPanel";
 import PreviewPanel from "../partial/PreviewPanel";
+import mock from "../uiRenderer/mock";
+import redux from "../data/redux";
 
 const Edit = () => {
   const navigate = useNavigate();
   const { pageId } = useParams();
+
+  useEffect(() => {
+    const init = () => {
+      redux.updateSchema(mock.schema);
+    };
+
+    init();
+  }, []);
 
   const handleOnSave = () => {
     navigate("/");

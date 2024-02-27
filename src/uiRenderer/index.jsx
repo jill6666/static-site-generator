@@ -1,8 +1,16 @@
 import React, { createElement } from "react";
 import UIStore from "./store";
+import redux from "../data/redux";
 
-const RenderSchema = ({ schema }) => {
+const RenderSchema = ({ schema, isClient }) => {
   const ResultMarkups = [];
+
+  const handleOnClick = (e, id) => {
+    if (isClient) return;
+
+    e?.stopPropagation();
+    redux.updateControlId(id);
+  };
 
   schema &&
     schema.forEach((item, index) => {
@@ -13,7 +21,11 @@ const RenderSchema = ({ schema }) => {
       if (!Component) return null;
       const Element = createElement(UIStore?.[type], props);
 
-      ResultMarkups.push(<div key={id}>{Element}</div>);
+      ResultMarkups.push(
+        <div data-id={id} key={id} onClick={(e) => handleOnClick(e, id)}>
+          {Element}
+        </div>
+      );
     });
 
   return <>{ResultMarkups}</>;
