@@ -5,23 +5,18 @@ import getUpdateSchema from "../utils/getUpdateSchema";
 import { RenderForm } from "../uiRenderer";
 import { UIConfigure } from "../controlConf";
 
-const ControlPanel = ({ onSave }) => {
+const ControlPanel = () => {
   const controlId = useSelector(pageSelector.controlId);
   const schema = useSelector(pageSelector.schema);
   const target = deepFindObjectById(controlId, schema);
   const formSchema = UIConfigure?.[target?.type];
 
-  const addBorderToBox = (id) => {
-    const isBox = target?.type === "Box";
-    if (!isBox) return;
-
-    const props = { border: "2px solid red" };
-    const updatedData = getUpdateSchema(id, props, schema);
+  const handleOnChange = (values) => {
+    const updatedData = getUpdateSchema(controlId, values, schema);
 
     redux.updateSchema(updatedData);
   };
 
-  console.log("target", target);
   return (
     <div className="h-full">
       <div className="sticky top-0 bg-white/30 z-40 backdrop-blur-sm flex justify-between items-center p-2 border-b">
@@ -35,6 +30,7 @@ const ControlPanel = ({ onSave }) => {
         id={controlId}
         schema={{ ...formSchema }}
         initialValues={target?.props}
+        onChange={handleOnChange}
       />
     </div>
   );

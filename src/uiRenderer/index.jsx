@@ -32,9 +32,13 @@ const RenderSchema = ({ schema, isClient }) => {
   return <>{ResultMarkups}</>;
 };
 
-const RenderForm = ({ id, schema, initialValues = {} }) => {
+const RenderForm = ({ id, schema, initialValues = {}, onChange }) => {
   const [form] = Form.useForm();
 
+  const handleOnChange = () => {
+    const values = form.getFieldsValue();
+    onChange && onChange(values);
+  };
   return (
     <Form
       name={id}
@@ -43,15 +47,16 @@ const RenderForm = ({ id, schema, initialValues = {} }) => {
       style={{ maxWidth: 600, padding: ".5rem" }}
       autoComplete="off"
       initialValues={initialValues}
+      onChange={handleOnChange}
     >
       {Object.entries(schema).map(([key, value]) => {
         const type = value?.type;
         const Element = FormStore?.[type];
         if (!Element) return null;
 
-        form.setFieldValue(`${id}-${key}`, initialValues?.[key]);
+        form.setFieldValue(`${key}`, initialValues?.[key]);
 
-        const combinedProps = { ...value, name: `${id}-${key}` };
+        const combinedProps = { ...value, name: `${key}` };
         return <Element {...combinedProps} />;
       })}
 
