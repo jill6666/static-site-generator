@@ -1,10 +1,8 @@
-export * as Effect from "./effect";
-export * as ImageControl from "../control/imageControl";
-export * as BackgroundGroup from "./backgroundGroup";
-export * as Size from "./size";
-export * as Nameable from "./nameable";
-export * as BoxModel from "./boxModel";
-export * as JustifyContent from "./justifyContent";
-export * as Transform from "./transform";
-export * as FontSize from "./fontSize";
-export * as Typography from "./typography";
+import Size from "./size";
+import Nameable from "./nameable";
+import BoxModel from "./boxModel";
+import JustifyContent from "./justifyContent";
+import FontSize from "./fontSize";
+import Typography from "./typography";
+
+export { Size, Nameable, BoxModel, JustifyContent, FontSize, Typography };

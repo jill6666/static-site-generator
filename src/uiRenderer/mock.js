@@ -6,12 +6,14 @@ const data = {
       id: "00001",
       type: "Box",
       props: {
+        name: "banner",
         padding: ".5rem",
         children: [
           {
             id: "10001",
             type: "AspectRatio",
             props: {
+              name: "bannerImg",
               ratio: [21, 9],
               imgUrl: "https://cataas.com/cat",
             },
@@ -23,6 +25,7 @@ const data = {
       id: "00002",
       type: "Box",
       props: {
+        name: "intro",
         padding: ".5rem 1rem",
         margin: "0 0 1rem 0",
         children: [
@@ -30,6 +33,7 @@ const data = {
             id: "20001",
             type: "Text",
             props: {
+              name: "hello world",
               text: "Hello, world",
               fontSize: "32px",
               fontWeight: "700",
@@ -40,6 +44,7 @@ const data = {
             id: "20002",
             type: "Progress",
             props: {
+              name: "progress",
               value: "77",
               color: "teal",
               background: "pink",
@@ -53,6 +58,7 @@ const data = {
       id: "00003",
       type: "Box",
       props: {
+        name: "tabs section",
         padding: ".5rem",
         height: "160px",
         children: [
@@ -60,6 +66,7 @@ const data = {
             id: "30001",
             type: "Tabs",
             props: {
+              name: "tabs",
               height: "200px",
               padding: ".5rem",
               contentColor: "pink",
@@ -86,6 +93,7 @@ const data = {
       id: "00004",
       type: "Box",
       props: {
+        name: "card section",
         padding: ".5rem",
         margin: "0 0 1rem 0",
         children: [
@@ -93,6 +101,7 @@ const data = {
             id: "40001",
             type: "Card",
             props: {
+              name: "card",
               title: "Card Title",
               description: "Card Description",
               children: [
@@ -103,6 +112,7 @@ const data = {
                     padding: "0 .5rem .5rem .5rem",
                     children: [
                       {
+                        name: "card as",
                         id: "41101",
                         type: "AspectRatio",
                         props: {
@@ -114,6 +124,7 @@ const data = {
                         id: "41102",
                         type: "Button",
                         props: {
+                          name: "card button",
                           navigateTo: "/",
                           text: "Click me!",
                           margin: ".5rem 0 0 0",
@@ -134,6 +145,7 @@ const data = {
       id: "00005",
       type: "Box",
       props: {
+        name: "carousel section",
         padding: ".5rem",
         margin: "0 0 1rem 0",
         children: [
@@ -141,6 +153,7 @@ const data = {
             id: "50001",
             type: "Carousel",
             props: {
+              name: "carousel",
               orientation: "horizontal",
               items: [
                 { imgUrl: "https://cataas.com/cat/gif", navigateTo: "/" },
@@ -156,12 +169,14 @@ const data = {
       id: "00006",
       type: "Box",
       props: {
+        name: "accordion section",
         padding: ".5rem",
         children: [
           {
             id: "60001",
             type: "Accordion",
             props: {
+              name: "accordion",
               padding: ".5rem",
               margin: ".2rem",
               background: "white",
@@ -193,12 +208,14 @@ const data = {
       id: "00007",
       type: "Box",
       props: {
+        name: "contact section",
         padding: ".5rem",
         children: [
           {
             id: "70001",
             type: "Box",
             props: {
+              name: "contact",
               padding: "1rem 0",
               twStyle: "gap-2",
               children: [
@@ -206,6 +223,7 @@ const data = {
                   id: "71001",
                   type: "Text",
                   props: {
+                    name: "contact text",
                     text: "Contact Us",
                     fontSize: "1.5rem",
                     fontWeight: "700",
@@ -215,6 +233,7 @@ const data = {
                   id: "71002",
                   type: "Text",
                   props: {
+                    name: "address",
                     text: "8F., No. 225-C棟, Sec. 2, Chang'an E. Rd., Songshan Dist., Taipei City 105, Taiwan (R.O.C.)",
                     fontSize: "14px",
                     fontWeight: "300",
@@ -227,6 +246,7 @@ const data = {
             id: "70002",
             type: "Map",
             props: {
+              name: "map",
               positions: [
                 { lat: 25.0407284, lng: 121.5484174 },
                 { lat: 25.0533797, lng: 121.5462562 },
