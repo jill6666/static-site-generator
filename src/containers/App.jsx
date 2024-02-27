@@ -6,17 +6,21 @@ import { useNavigate } from "react-router-dom";
 const App = () => {
   const navigate = useNavigate();
 
-  const handleOnClick = () => {
-    const pageId = "N";
+  const handleCreatePage = () => {
+    const pageId = "N"; // TODO:
     navigate(`create/${pageId}`);
   };
+
+  const handleOnEdit = (pageId) => navigate(`edit/${pageId}`);
+  const handlePreview = (pageId) => {};
+  const handleDelete = (pageId) => {};
 
   return (
     <div>
       <Header
         extra={
           <button
-            onClick={handleOnClick}
+            onClick={handleCreatePage}
             className="border rounded-md px-4 py-1"
           >
             New Page...
@@ -26,7 +30,13 @@ const App = () => {
       <div className="pt-[4rem]">
         <div className="flex gap-4 p-4">
           {mockData.map((item) => (
-            <Card key={item?.pageId} {...item} />
+            <Card
+              {...item}
+              key={item?.pageId}
+              onEdit={() => handleOnEdit(item?.pageId)}
+              onPreview={() => handlePreview(item?.pageId)}
+              onDelete={() => handleDelete(item?.pageId)}
+            />
           ))}
         </div>
       </div>

@@ -11,6 +11,7 @@ import {
   ResizablePanel,
   ResizablePanelGroup,
 } from "../components/Resizable";
+import Button from "../uiRenderer/store/web/Button";
 
 const Edit = () => {
   const navigate = useNavigate();
@@ -27,16 +28,26 @@ const Edit = () => {
   const handleOnSave = () => {
     navigate("/");
   };
+  const PreviewInTab = () => {};
+
+  const addsOnButtons = [
+    {
+      text: "Preview in Tab",
+      value: "inTab",
+      onClick: PreviewInTab,
+      variant: "link",
+    },
+    { text: "Save", value: "save", onClick: handleOnSave, variant: "default" },
+  ];
   return (
     <div>
       <Header
         extra={
-          <button
-            onClick={handleOnSave}
-            className="border rounded-md px-4 py-1"
-          >
-            Save
-          </button>
+          <div className="flex gap-4">
+            {addsOnButtons.map((i) => (
+              <Button {...i} className="border rounded-md px-4 py-1" />
+            ))}
+          </div>
         }
       />
       <ResizablePanelGroup

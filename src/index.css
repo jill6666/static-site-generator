@@ -90,9 +90,3 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
-.card-actions > button {
-  background-color: #6b7280;
-  border-radius: 4px;
-  padding: 2px 4px;
-  color: #fff;
-}

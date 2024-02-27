@@ -38,49 +38,50 @@ const Dnd = ({ data, active, onClick, onDrop }) => {
 
   return (
     <>
-      <div className="w-full flex gap-2 justify-end">
+      <div className="w-full flex gap-2 justify-end px-4">
         <EyeNoneIcon className="cursor-pointer" onClick={handleCloseAll} />
       </div>
-      <DndProvider backend={MultiBackend} options={getBackendOptions()}>
-        <Tree
-          ref={ref}
-          initialOpen={true}
-          sort={false}
-          tree={treeData}
-          enableAnimateExpand={true}
-          rootId={0}
-          onDrop={handleDrop}
-          render={(node, { depth, isOpen, onToggle }) => {
-            const droppable = node?.droppable;
-            const isActive = node?.id === active;
+      <div className="drag-wrapper">
+        <DndProvider backend={MultiBackend} options={getBackendOptions()}>
+          <Tree
+            ref={ref}
+            initialOpen={true}
+            sort={false}
+            tree={treeData}
+            enableAnimateExpand={true}
+            rootId={0}
+            onDrop={handleDrop}
+            render={(node, { depth, isOpen, onToggle }) => {
+              const droppable = node?.droppable;
+              const isActive = node?.id === active;
 
-            const props = {
-              onClick: () => {
-                handleOnClick(node?.id);
-                onToggle();
-              },
-              style: {
-                padding: "0 4px",
-                paddingLeft: depth * 23,
-                color: isActive ? "#555" : "",
-                fontWeight: isActive ? "bold" : "",
-                backgroundColor: isActive ? "#FFF4A2" : "",
-              },
-            };
+              const props = {
+                onClick: () => {
+                  handleOnClick(node?.id);
+                  onToggle();
+                },
+                style: {
+                  paddingLeft: depth * 23 + 12,
+                  color: isActive ? "#555" : "",
+                  fontWeight: isActive ? "bold" : "",
+                  backgroundColor: isActive ? "#eee" : "",
+                },
+              };
 
-            return (
-              <div className="w-full flex items-center" {...props}>
-                {droppable && (
-                  <span className="pr-2" onClick={onToggle}>
-                    {isOpen ? <ChevronDownIcon /> : <ChevronRightIcon />}
-                  </span>
-                )}
-                {node?.text}
-              </div>
-            );
-          }}
-        />
-      </DndProvider>
+              return (
+                <div className="w-full flex items-center py-4" {...props}>
+                  {droppable && (
+                    <span className="pr-2" onClick={onToggle}>
+                      {isOpen ? <ChevronDownIcon /> : <ChevronRightIcon />}
+                    </span>
+                  )}
+                  {node?.text}
+                </div>
+              );
+            }}
+          />
+        </DndProvider>
+      </div>
     </>
   );
 };

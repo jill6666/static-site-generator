@@ -40,7 +40,7 @@ const AssetsPanel = () => {
   ];
 
   return (
-    <TabsMarkup.Tabs className="w-full">
+    <TabsMarkup.Tabs defaultValue={tabItems?.[0]?.tab} className="w-full">
       <TabsMarkup.TabsList className="grid w-full grid-cols-3">
         {tabItems.map((item) => (
           <TabsMarkup.TabsTrigger key={item?.tab} value={item?.tab}>
@@ -50,11 +50,7 @@ const AssetsPanel = () => {
       </TabsMarkup.TabsList>
 
       {tabItems.map((item, index) => (
-        <TabsMarkup.TabsContent
-          key={item?.tab}
-          value={item?.tab}
-          className="px-4"
-        >
+        <TabsMarkup.TabsContent key={item?.tab} value={item?.tab}>
           {item?.content}
         </TabsMarkup.TabsContent>
       ))}

@@ -5,6 +5,7 @@ import {
   TabsList,
   TabsTrigger,
 } from "./markup";
+import size from "lodash/size";
 
 const RenderSchema = React.lazy(() => import("../../../index"));
 
@@ -22,11 +23,16 @@ const Tabs = ({
 }) => {
   return (
     <TabsMarkup
-      defaultValue="account"
+      defaultValue={items?.[0]?.tab?.text}
       className="w-full"
       style={{ width, margin }}
     >
-      <TabsList className="grid w-full grid-cols-2">
+      <TabsList
+        className="grid w-full"
+        style={{
+          gridTemplateColumns: `repeat(${size(items) || 1} , 1fr)`,
+        }}
+      >
         {items.map((item) => (
           <TabsTrigger
             key={item?.tab?.text}
