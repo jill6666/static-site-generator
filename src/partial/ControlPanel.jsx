@@ -18,7 +18,7 @@ const ControlPanel = () => {
   };
 
   return (
-    <div className="h-full">
+    <div className="h-full overflow-y-scroll">
       <div className="sticky top-0 bg-white/30 z-40 backdrop-blur-sm flex justify-between items-center p-2 border-b">
         <div className="bg-white/30 border border-primary text-primary text-center px-2 py-1 rounded-md h-full">
           {target?.type}

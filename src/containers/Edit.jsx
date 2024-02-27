@@ -39,15 +39,23 @@ const Edit = () => {
           </button>
         }
       />
-      <ResizablePanelGroup direction="horizontal" className="pt-[4rem]">
+      <ResizablePanelGroup
+        direction="horizontal"
+        className="pt-[4rem] flex border h-[100vh] overflow-y-scroll"
+        style={{ height: "100vh" }}
+      >
         <ResizablePanel>
           <AssetsPanel />
         </ResizablePanel>
+
         <ResizableHandle />
+
         <ResizablePanel>
           <ControlPanel />
         </ResizablePanel>
+
         <ResizableHandle />
+
         <ResizablePanel>
           <PreviewPanel />
         </ResizablePanel>
