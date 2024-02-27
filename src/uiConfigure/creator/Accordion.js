@@ -4,7 +4,7 @@ const schema = {
   ...Nameable,
   ...Size,
   ...BoxModel,
-  twStyle: { type: "Input", label: "Style (tailwind)", props: {} },
+  twStyle: { type: "Input", label: "Style (tailwind)" },
   triggerColor: { type: "Color", label: "Trigger Color" },
   contentColor: { type: "Color", label: "Content Color" },
   items: {

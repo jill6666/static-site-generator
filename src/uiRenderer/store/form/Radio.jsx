@@ -1,13 +1,6 @@
 import { Radio } from "antd";
 
-const FormRadio = ({
-  defaultValue,
-  value,
-  name,
-  disabled,
-  onChange,
-  control,
-}) => {
+const FormRadio = ({ defaultValue, value, disabled, onChange, control }) => {
   const handleOnChange = (val) => onChange(val?.target?.value);
 
   return (
@@ -17,7 +10,7 @@ const FormRadio = ({
       buttonStyle="solid"
       onChange={handleOnChange}
       disabled={disabled}
-      style={{ width: "100%", display: "flex" }}
+      className="w-full flex"
     >
       {control &&
         control?.map((option, i) => {

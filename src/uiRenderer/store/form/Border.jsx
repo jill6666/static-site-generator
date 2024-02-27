@@ -1,7 +1,6 @@
 import { Select, ColorPicker } from "antd";
 import InputWithAddonAfter from "./InputWithAddonAfter";
-
-const option = ["none", "solid", "dashed", "double", "dotted"];
+import { borderStyles } from "../control/border";
 
 /** value: 1px #000 solid */
 const FormBorder = ({ onChange, value }) => {
@@ -14,14 +13,7 @@ const FormBorder = ({ onChange, value }) => {
     onChange(result.join(" "));
   };
   return (
-    <div
-      style={{
-        gridTemplateColumns: "repeat(3, minmax(0, 1fr))",
-        display: "grid",
-        gap: ".25rem",
-        width: "100%",
-      }}
-    >
+    <div className="grid grid-cols-3 gap-2 w-full">
       <InputWithAddonAfter
         addonAfterOptions={["px"]}
         defaultValue={arr?.[0]}
@@ -35,8 +27,9 @@ const FormBorder = ({ onChange, value }) => {
         onChangeComplete={(color) => handleOnChange(color.toHexString(), 1)}
         defaultValue={arr?.[1]}
       />
+
       <Select value={arr?.[2]} onChange={(val) => handleOnChange(val, 2)}>
-        {option.map((i) => (
+        {borderStyles?.map((i) => (
           <Select.Option value={i}>{i}</Select.Option>
         ))}
       </Select>

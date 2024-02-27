@@ -1,25 +1,19 @@
 import { useState, useEffect } from "react";
 import InputWithAddonAfter from "./InputWithAddonAfter";
-
-const defaultContent = [
-  { name: "top", placeholder: "Top" },
-  { name: "right", placeholder: "Right" },
-  { name: "bottom", placeholder: "Bottom" },
-  { name: "left", placeholder: "Left" },
-];
+import { LockClosedIcon, LockOpen1Icon } from "@radix-ui/react-icons";
+import { distances } from "../control/distance";
 
 const FormDistance = ({ value, onChange }) => {
   const [locked, setLocked] = useState(false);
-  const [content, setContent] = useState(defaultContent);
+  const [content, setContent] = useState(distances);
 
   useEffect(() => {
     const refineDefault2Content = (props, option) => {
       const arr = props ? props?.split(" ") : [];
-      const result = option.map((item, idx) => {
-        const target = arr[idx];
-        const content = target;
-        return { ...item, value: content };
-      });
+      const result = option.map((item, idx) => ({
+        ...item,
+        value: arr?.[idx],
+      }));
 
       return result;
     };
@@ -33,6 +27,7 @@ const FormDistance = ({ value, onChange }) => {
     const disabled = val === "auto";
     let newContent = [...content];
     const value = disabled ? "" : newContent[index]?.value;
+
     newContent[index] = {
       ...newContent[index],
       disabled,
@@ -70,29 +65,17 @@ const FormDistance = ({ value, onChange }) => {
     setContent(newContent);
   };
 
-  const lockedIcon = locked ? "ri-lock-fill" : "ri-lock-unlock-line";
+  const LockIcon = (args) =>
+    locked ? <LockClosedIcon {...args} /> : <LockOpen1Icon {...args} />;
 
   return (
-    <div style={{ position: "relative" }}>
-      <i
+    <div className="relative">
+      <LockIcon
         onClick={handleOnLock}
-        className={lockedIcon}
-        style={{
-          cursor: "pointer",
-          position: "absolute",
-          top: "-28px",
-          zIndex: "5",
-          right: 8,
-        }}
-      ></i>
+        className="absolute cursor-pointer top-[-28px] right-4 z-10"
+      />
 
-      <div
-        style={{
-          gridTemplateColumns: "repeat(2, minmax(0, 1fr))",
-          display: "grid",
-          gap: ".25rem",
-        }}
-      >
+      <div className="grid grid-cols-2 gap-2">
         {content.map((item, index) => (
           <div key={item?.name}>
             <InputWithAddonAfter

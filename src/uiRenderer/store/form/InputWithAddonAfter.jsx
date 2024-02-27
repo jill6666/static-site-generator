@@ -41,7 +41,7 @@ const InputWithAddonAfter = ({
   };
 
   const selectAfter = (
-    <Select value={option} onChange={selectOnChange} disabled={disabled}>
+    <Select value={option} onChange={selectOnChange}>
       {addonAfterOptions &&
         addonAfterOptions?.map((item) => (
           <Select.Option value={item}>{item}</Select.Option>

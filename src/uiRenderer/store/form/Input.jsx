@@ -2,7 +2,6 @@ import { Input } from "antd";
 
 const FormInput = ({
   placeholder,
-  name,
   onChange,
   defaultValue,
   value,

@@ -2,7 +2,7 @@ import InputWithAddonAfter from "./InputWithAddonAfter";
 
 const FormSize = ({ onChange, value }) => {
   return (
-    <div style={{ maxWidth: "200px" }}>
+    <div className="max-w-[200px]">
       <InputWithAddonAfter
         defaultValue={value}
         type="number"
