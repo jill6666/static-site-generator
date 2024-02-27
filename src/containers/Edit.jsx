@@ -6,6 +6,11 @@ import ControlPanel from "../partial/ControlPanel";
 import PreviewPanel from "../partial/PreviewPanel";
 import mock from "../uiRenderer/mock";
 import redux from "../data/redux";
+import {
+  ResizableHandle,
+  ResizablePanel,
+  ResizablePanelGroup,
+} from "../components/Resizable";
 
 const Edit = () => {
   const navigate = useNavigate();
@@ -34,19 +39,19 @@ const Edit = () => {
           </button>
         }
       />
-      <div className="pt-[4rem]">
-        <div className="w-full flex border p-0 m-0 h-[calc(100vh-100px)]">
-          <div className="w-[20%]">
-            <AssetsPanel />
-          </div>
-          <div className="flex-1 overflow-y-scroll">
-            <ControlPanel />
-          </div>
-          <div className="w-[40%] max-w-[400px] overflow-y-scroll">
-            <PreviewPanel />
-          </div>
-        </div>
-      </div>
+      <ResizablePanelGroup direction="horizontal" className="pt-[4rem]">
+        <ResizablePanel>
+          <AssetsPanel />
+        </ResizablePanel>
+        <ResizableHandle />
+        <ResizablePanel>
+          <ControlPanel />
+        </ResizablePanel>
+        <ResizableHandle />
+        <ResizablePanel>
+          <PreviewPanel />
+        </ResizablePanel>
+      </ResizablePanelGroup>
     </div>
   );
 };
