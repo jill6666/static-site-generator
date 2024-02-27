@@ -119,26 +119,6 @@
       "type": "Box",
       "props": {
         "padding": ".5rem",
-        "children": [
-          {
-            "type": "Map",
-            "props": {
-              "positions": [
-                { "lat": 25.0407284, "lng": 121.5484174 },
-                { "lat": 25.0533797, "lng": 121.5462562 },
-                { "lat": 25.0518654, "lng": 121.5448042 }
-              ],
-              "defaultCenter": { "lat": 25.0495911, "lng": 121.5455781 },
-              "defaultZoom": 16
-            }
-          }
-        ]
-      }
-    },
-    {
-      "type": "Box",
-      "props": {
-        "padding": ".5rem",
         "margin": "0 0 1rem 0",
         "children": [
           {
@@ -183,6 +163,51 @@
                   "content": "Yes. It's animated by default, but you can disable it if you prefer."
                 }
               ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "Box",
+      "props": {
+        "padding": ".5rem",
+        "children": [
+          {
+            "type": "Box",
+            "props": {
+              "padding": "1rem 0",
+              "twStyle": "gap-2",
+              "children": [
+                {
+                  "type": "Text",
+                  "props": {
+                    "text": "Contact Us",
+                    "fontSize": "1.5rem",
+                    "fontWeight": "700"
+                  }
+                },
+                {
+                  "type": "Text",
+                  "props": {
+                    "text": "8F., No. 225-C棟, Sec. 2, Chang'an E. Rd., Songshan Dist., Taipei City 105, Taiwan (R.O.C.)",
+                    "fontSize": "14px",
+                    "fontWeight": "300"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "type": "Map",
+            "props": {
+              "positions": [
+                { "lat": 25.0407284, "lng": 121.5484174 },
+                { "lat": 25.0533797, "lng": 121.5462562 },
+                { "lat": 25.0518654, "lng": 121.5448042 }
+              ],
+              "defaultCenter": { "lat": 25.0495911, "lng": 121.5455781 },
+              "defaultZoom": 16
             }
           }
         ]
