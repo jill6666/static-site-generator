@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { pageSelector } from "../data/pageSlice";
 import getUpdateSchema from "../utils/getUpdateSchema";
 import { RenderForm } from "../uiRenderer";
-import { UIConfigure } from "../controlConf";
+import { UIConfigure } from "../uiConfigure";
 
 const ControlPanel = () => {
   const controlId = useSelector(pageSelector.controlId);
