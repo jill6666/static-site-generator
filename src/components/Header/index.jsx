@@ -20,7 +20,7 @@ const Header = ({ extra }) => {
   return (
     <div className="w-full bg-[#FFFFFF] border-b text-[#272727] fixed top-0 z-40">
       <nav
-        className={`flex min-h-[60px] m-auto w-full max-w-[1000px] justify-between items-center`}
+        className={`flex min-h-[60px] m-auto w-full px-4 justify-between items-center`}
       >
         <a
           onClick={handleScroll}
