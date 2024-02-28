@@ -7,10 +7,12 @@ import Edit from "./containers/Edit";
 import ErrorPage from "./containers/ErrorPage";
 import { store } from "./data/store";
 import { Provider } from "react-redux";
+import View from "./containers/View";
 
 const router = createBrowserRouter([
   { path: "/", element: <App />, errorElement: <ErrorPage /> },
   { path: "edit/:pageId", element: <Edit />, errorElement: <ErrorPage /> },
+  { path: "view/:pageId", element: <View />, errorElement: <ErrorPage /> },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(

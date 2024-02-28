@@ -1,6 +1,13 @@
-const data = {
-  pageId: "0001",
-  settings: { backgroundColor: "#eee" },
+const pageData = {
+  pageId: "00000",
+  settings: {
+    backgroundColor: "#eee",
+    title: "It's a sample, will vanish when you create a new page.",
+    imgUrl: "https://cataas.com/cat",
+    updatedAt: "2024/02/10 00:00:00",
+    updatedBy: "Sophia",
+    enabled: true,
+  },
   schema: [
     {
       id: "00001",
@@ -261,4 +268,4 @@ const data = {
     },
   ],
 };
-export default data;
+export default pageData;

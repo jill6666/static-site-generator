@@ -1,10 +1,10 @@
 import { Suspense } from "react";
-import mock from "../uiRenderer/mock";
+import { samplePageData } from "../data/const";
 import RenderSchema from "../uiRenderer";
 import { useSelector } from "react-redux";
 import { pageSelector } from "../data/pageSlice";
 
-const PreviewPanel = ({ settings = mock.settings }) => {
+const PreviewPanel = ({ settings = samplePageData.settings }) => {
   const pageSchema = useSelector(pageSelector.schema);
   const backgroundColor = settings?.backgroundColor || "";
 

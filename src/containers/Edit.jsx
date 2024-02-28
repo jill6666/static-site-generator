@@ -4,7 +4,7 @@ import Header from "../components/Header";
 import AssetsPanel from "../partial/AssetsPanel";
 import ControlPanel from "../partial/ControlPanel";
 import PreviewPanel from "../partial/PreviewPanel";
-import mock from "../uiRenderer/mock";
+import { samplePageData } from "../data/const";
 import redux from "../data/redux";
 import {
   ResizableHandle,
@@ -19,8 +19,8 @@ const Edit = () => {
 
   useEffect(() => {
     const init = () => {
-      redux.updateControlId(mock.schema?.[0]?.id);
-      redux.updateSchema(mock.schema);
+      redux.updateControlId(samplePageData.schema?.[0]?.id);
+      redux.updateSchema(samplePageData.schema);
     };
 
     init();

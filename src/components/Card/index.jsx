@@ -1,49 +1,70 @@
 import {
   Card as CardMarkup,
-  CardHeader,
   CardTitle,
   CardContent,
   CardFooter,
   CardDescription,
 } from "../../uiRenderer/store/web/Card/markup";
-import { AspectRatio } from "../../uiRenderer/store/web/AspectRatio/markup";
 import { Button } from "../../uiRenderer/store/web/Button/markup";
+import {
+  OpenInNewWindowIcon,
+  Pencil2Icon,
+  TrashIcon,
+  CopyIcon,
+} from "@radix-ui/react-icons";
+import { Image } from "antd";
 
 const Card = ({
   imgUrl = "",
   title = "",
   updatedAt = "",
   updatedBy = "",
-  onPreview = () => {},
+  onView = () => {},
   onEdit = () => {},
   onDelete = () => {},
+  onCopy = () => {},
 }) => {
+  const btns = [
+    {
+      value: "view",
+      icon: <OpenInNewWindowIcon />,
+      variant: "outline",
+      onClick: onView,
+    },
+    {
+      value: "edit",
+      icon: <Pencil2Icon />,
+      variant: "outline",
+      onClick: onEdit,
+    },
+    {
+      value: "delete",
+      icon: <TrashIcon />,
+      variant: "outline",
+      onClick: onDelete,
+    },
+    { value: "copy", icon: <CopyIcon />, variant: "outline", onClick: onCopy },
+  ];
   return (
-    <CardMarkup className="border rounded-[1rem] bg-white flex flex-col">
-      <CardHeader>
-        <AspectRatio ratio={16 / 9}>
-          <img
-            src={imgUrl}
-            alt="Image"
-            className="object-cover w-full h-full"
-          />
-        </AspectRatio>
-      </CardHeader>
-      <CardContent>
-        <CardTitle className="mb-2">{title}</CardTitle>
-        <CardDescription>UpdatedAt: {updatedAt}</CardDescription>
-        <CardDescription>UpdatedBy: {updatedBy}</CardDescription>
+    <CardMarkup className="border rounded-none max-w-[250px] bg-white flex flex-col">
+      <Image
+        width={"100%"}
+        height={"120px"}
+        src={imgUrl}
+        alt="Image"
+        style={{ objectFit: "cover" }}
+      />
+      <CardContent className="p-4 flex flex-col gap-2">
+        <CardTitle>{title}</CardTitle>
+        <CardDescription>{updatedAt}</CardDescription>
+        <CardDescription>By: {updatedBy}</CardDescription>
       </CardContent>
-      <CardFooter className="w-full flex gap-4">
-        <Button variant="outline" onClick={onPreview}>
-          Preview
-        </Button>
-        <Button variant="outline" onClick={onEdit}>
-          Edit
-        </Button>
-        <Button variant="outline" onClick={onDelete}>
-          Delete
-        </Button>
+      <CardFooter className="w-full flex gap-4 p-4 pt-0 justify-between">
+        {btns.map((btn) => (
+          <Button key={btn?.value} {...btn} size="icon">
+            {btn?.icon}
+          </Button>
+        ))}
       </CardFooter>
     </CardMarkup>
   );

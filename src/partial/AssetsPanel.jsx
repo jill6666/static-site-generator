@@ -49,7 +49,7 @@ const AssetsPanel = () => {
         ))}
       </TabsMarkup.TabsList>
 
-      {tabItems.map((item, index) => (
+      {tabItems.map((item) => (
         <TabsMarkup.TabsContent key={item?.tab} value={item?.tab}>
           {item?.content}
         </TabsMarkup.TabsContent>
