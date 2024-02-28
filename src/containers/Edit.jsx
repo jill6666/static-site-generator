@@ -4,7 +4,6 @@ import Header from "../components/Header";
 import AssetsPanel from "../partial/AssetsPanel";
 import ControlPanel from "../partial/ControlPanel";
 import PreviewPanel from "../partial/PreviewPanel";
-import { samplePageData } from "../data/const";
 import redux from "../data/redux";
 import {
   ResizableHandle,
@@ -12,22 +11,40 @@ import {
   ResizablePanelGroup,
 } from "../components/Resizable";
 import Button from "../uiRenderer/store/web/Button";
+import store from "store2";
+import { PAGE_LIST } from "../data/const";
+import { useSelector } from "react-redux";
+import { pageSelector } from "../data/pageSlice";
 
 const Edit = () => {
+  const schema = useSelector(pageSelector.schema);
   const navigate = useNavigate();
   const { pageId } = useParams();
 
   useEffect(() => {
     const init = () => {
-      redux.updateControlId(samplePageData.schema?.[0]?.id);
-      redux.updateSchema(samplePageData.schema);
+      const storePageData = store
+        .get(PAGE_LIST, [])
+        .find((page) => page?.pageId === pageId);
+
+      if (!storePageData) return;
+      redux.updateControlId(storePageData?.schema?.[0]?.id);
+      redux.updateSchema(storePageData?.schema);
     };
 
     init();
   }, []);
 
-  const handleOnSave = () => {};
-  const handlePreview = () => {};
+  const handleOnSave = () => {
+    let pageList = store.get(PAGE_LIST || []);
+    const index = pageList.findIndex((page) => page?.pageId === pageId);
+    if (index === -1) return;
+
+    pageList[index] = { ...pageList[index], schema };
+    store.set(PAGE_LIST, pageList);
+  };
+
+  const handlePreview = () => navigate(`/view/${pageId}`);
 
   const addsOnButtons = [
     {

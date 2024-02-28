@@ -6,6 +6,11 @@ import convertSchemaToTree from "../utils/convertSchemaToTree";
 import flashElement from "../utils/flashElement";
 import getNewSchemaByDragOpt from "../utils/getNewSchemaByDragOpt";
 import redux from "../data/redux";
+import { UIStore } from "../uiRenderer/store";
+import { PlusIcon } from "@radix-ui/react-icons";
+import { Button } from "../uiRenderer/store/web/Button/markup";
+import getUpdateSchema from "../utils/getUpdateSchema";
+import getParentObject from "../utils/getParentObject";
 
 const AssetsPanel = () => {
   const controlId = useSelector(pageSelector.controlId);
@@ -17,8 +22,26 @@ const AssetsPanel = () => {
     redux.updateControlId(id);
     flashElement(block);
   };
-  const treeMapOnDrop = (newTreeData, opt) => {
-    const newSchema = getNewSchemaByDragOpt(pageSchema, opt, newTreeData);
+
+  const treeMapOnDrop = (newTreeData, props) => {
+    const newSchema = getNewSchemaByDragOpt(pageSchema, props, newTreeData);
+
+    redux.updateSchema(newSchema);
+  };
+
+  const handleAddElement = (key) => {
+    const parentProps = getParentObject(controlId, pageSchema);
+    const newElementProps = getElementDefaultProps(key);
+    const newParentProps = {
+      ...parentProps?.props,
+      children: [...(parentProps?.props?.children || []), newElementProps],
+    };
+
+    const newSchema = getUpdateSchema(
+      parentProps?.id,
+      newParentProps,
+      pageSchema
+    );
 
     redux.updateSchema(newSchema);
   };
@@ -35,7 +58,23 @@ const AssetsPanel = () => {
         />
       ),
     },
-    { tab: "All", content: <>Asset</> },
+    {
+      tab: "All",
+      content: (
+        <div className="flex flex-col">
+          {Object.keys(UIStore).map((item) => (
+            <div className="px-[12px] py-1 flex items-center justify-between gap-2 hover:bg-[#eee]">
+              <p>{item}</p>
+              <div className="flex items-center justify-between gap-2">
+                <Button size="icon" variant="ghost">
+                  <PlusIcon onClick={() => handleAddElement(item)} />
+                </Button>
+              </div>
+            </div>
+          ))}
+        </div>
+      ),
+    },
     { tab: "Template", content: <>Template</> },
   ];
 
@@ -59,3 +98,12 @@ const AssetsPanel = () => {
 };
 
 export default AssetsPanel;
+
+const getElementDefaultProps = (type) => {
+  // TODO:
+  return {
+    id: toString(Math.random()),
+    type,
+    props: {},
+  };
+};

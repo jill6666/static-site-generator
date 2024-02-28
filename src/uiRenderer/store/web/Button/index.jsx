@@ -14,6 +14,7 @@ const Button = ({
   margin,
   border,
   borderRadius,
+  ...props
 }) => {
   return (
     <ButtonMarkup
@@ -30,6 +31,7 @@ const Button = ({
         border,
         borderRadius,
       }}
+      {...props}
     >
       {text}
     </ButtonMarkup>
