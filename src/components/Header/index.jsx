@@ -18,23 +18,25 @@ const Header = ({ extra }) => {
   };
 
   return (
-    <nav
-      className={`flex min-h-[60px] w-full justify-between md:px-6 px-4 items-center fixed top-0 z-40 bg-[#FFFFFF] border-b text-[#272727]`}
-    >
-      <a
-        onClick={handleScroll}
-        className={`cursor-pointer text-xl tracking-widest flex items-center gap-2`}
+    <div className="w-full bg-[#FFFFFF] border-b text-[#272727] fixed top-0 z-40">
+      <nav
+        className={`flex min-h-[60px] m-auto w-full max-w-[1000px] justify-between items-center`}
       >
-        {showBackkey && (
-          <>
-            <ChevronLeftIcon className="flex mr-2" />
-            <CubeIcon />
-          </>
-        )}
-        {!showBackkey && <p>CUBE</p>}
-      </a>
-      {extra}
-    </nav>
+        <a
+          onClick={handleScroll}
+          className={`cursor-pointer text-xl tracking-widest flex items-center gap-2`}
+        >
+          {showBackkey && (
+            <>
+              <ChevronLeftIcon className="flex mr-2" />
+              <CubeIcon />
+            </>
+          )}
+          {!showBackkey && <p>CUBE</p>}
+        </a>
+        {extra}
+      </nav>
+    </div>
   );
 };
 

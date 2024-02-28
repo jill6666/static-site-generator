@@ -29,14 +29,12 @@ const App = () => {
 
   const handleOnEdit = (pageId) => navigate(`edit/${pageId}`);
   const handleView = (pageId) => navigate(`view/${pageId}`);
-
   const handleDelete = (pageId) => {
     const newStoreList = list.filter((item) => item?.pageId !== pageId);
 
     setList(newStoreList);
     store.set(PAGE_LIST, newStoreList);
   };
-
   const getList = () => {
     let storeList = store.get(PAGE_LIST, []);
 
@@ -53,17 +51,17 @@ const App = () => {
     return pageList;
   };
 
+  const HeaderExtra = (
+    <Button variant="outline" onClick={handleCreatePage}>
+      New Page...
+    </Button>
+  );
+
   return (
-    <div>
-      <Header
-        extra={
-          <Button variant="outline" onClick={handleCreatePage}>
-            New Page...
-          </Button>
-        }
-      />
-      <div className="pt-[4rem]">
-        <div className="flex gap-4 p-4">
+    <>
+      <Header extra={HeaderExtra} />
+      <div className="pt-[4rem] w-full">
+        <div className="grid grid-cols-4 gap-6 py-4 max-w-[1000px] m-auto">
           {list.map((item) => (
             <Card
               {...item}
@@ -87,7 +85,7 @@ const App = () => {
           <p>Are you sure you want to delete this page?</p>
         </Modal>
       </div>
-    </div>
+    </>
   );
 };
 
