@@ -1,16 +1,17 @@
-import { useSelector } from "react-redux";
-import { pageSelector } from "../data/pageSlice";
-import TreeMap from "../components/TreeMap";
-import TabsMarkup from "../uiRenderer/store/web/Tabs/markup";
-import convertSchemaToTree from "../utils/convertSchemaToTree";
-import flashElement from "../utils/flashElement";
-import getNewSchemaByDragOpt from "../utils/getNewSchemaByDragOpt";
-import redux from "../data/redux";
-import { UIStore } from "../uiRenderer/store";
-import { PlusIcon } from "@radix-ui/react-icons";
-import { Button } from "../uiRenderer/store/web/Button/markup";
-import getUpdateSchema from "../utils/getUpdateSchema";
-import getParentObject from "../utils/getParentObject";
+import { useSelector } from 'react-redux';
+import { pageSelector } from '../data/pageSlice';
+import TreeMap from '../components/TreeMap';
+import TabsMarkup from '../uiRenderer/store/web/Tabs/markup';
+import convertSchemaToTree from '../utils/convertSchemaToTree';
+import flashElement from '../utils/flashElement';
+import getNewSchemaByDragOpt from '../utils/getNewSchemaByDragOpt';
+import redux from '../data/redux';
+import { UIStore } from '../uiRenderer/store';
+import { PlusIcon } from '@radix-ui/react-icons';
+import { Button } from '../uiRenderer/store/web/Button/markup';
+import getUpdateSchema from '../utils/getUpdateSchema';
+import getParentObject from '../utils/getParentObject';
+import getUniqId from '../utils/getUniqId';
 
 const AssetsPanel = () => {
   const controlId = useSelector(pageSelector.controlId);
@@ -29,7 +30,7 @@ const AssetsPanel = () => {
     redux.updateSchema(newSchema);
   };
 
-  const handleAddElement = (key) => {
+  const handleAddElement = key => {
     const parentProps = getParentObject(controlId, pageSchema);
     const newElementProps = getElementDefaultProps(key);
     const newParentProps = {
@@ -37,32 +38,21 @@ const AssetsPanel = () => {
       children: [...(parentProps?.props?.children || []), newElementProps],
     };
 
-    const newSchema = getUpdateSchema(
-      parentProps?.id,
-      newParentProps,
-      pageSchema
-    );
+    const newSchema = getUpdateSchema(parentProps?.id, newParentProps, pageSchema);
 
     redux.updateSchema(newSchema);
   };
 
   const tabItems = [
     {
-      tab: "Current",
-      content: (
-        <TreeMap
-          data={treeData}
-          active={controlId}
-          onClick={treeMapOnClick}
-          onDrop={treeMapOnDrop}
-        />
-      ),
+      tab: 'Current',
+      content: <TreeMap data={treeData} active={controlId} onClick={treeMapOnClick} onDrop={treeMapOnDrop} />,
     },
     {
-      tab: "All",
+      tab: 'All',
       content: (
         <div className="flex flex-col">
-          {Object.keys(UIStore).map((item) => (
+          {Object.keys(UIStore).map(item => (
             <div className="px-[12px] py-1 flex items-center justify-between gap-2 hover:bg-[#eee]">
               <p>{item}</p>
               <div className="flex items-center justify-between gap-2">
@@ -75,20 +65,20 @@ const AssetsPanel = () => {
         </div>
       ),
     },
-    { tab: "Template", content: <>Template</> },
+    { tab: 'Template', content: <>Template</> },
   ];
 
   return (
     <TabsMarkup.Tabs defaultValue={tabItems?.[0]?.tab} className="w-full">
       <TabsMarkup.TabsList className="grid w-full grid-cols-3">
-        {tabItems.map((item) => (
+        {tabItems.map(item => (
           <TabsMarkup.TabsTrigger key={item?.tab} value={item?.tab}>
             {item?.tab}
           </TabsMarkup.TabsTrigger>
         ))}
       </TabsMarkup.TabsList>
 
-      {tabItems.map((item) => (
+      {tabItems.map(item => (
         <TabsMarkup.TabsContent key={item?.tab} value={item?.tab}>
           {item?.content}
         </TabsMarkup.TabsContent>
@@ -99,10 +89,10 @@ const AssetsPanel = () => {
 
 export default AssetsPanel;
 
-const getElementDefaultProps = (type) => {
+const getElementDefaultProps = type => {
   // TODO:
   return {
-    id: toString(Math.random()),
+    id: getUniqId(),
     type,
     props: {},
   };

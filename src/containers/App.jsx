@@ -1,12 +1,13 @@
-import React, { useState, useEffect } from "react";
-import Header from "../components/Header";
-import Card from "../components/Card";
-import { useNavigate } from "react-router-dom";
-import store from "store2";
-import { PAGE_LIST, samplePageData } from "../data/const";
-import { Button } from "../uiRenderer/store/web/Button/markup";
-import size from "lodash/size";
-import { Modal } from "antd";
+import React, { useState, useEffect } from 'react';
+import Header from '../components/Header';
+import Card from '../components/Card';
+import { useNavigate } from 'react-router-dom';
+import store from 'store2';
+import { PAGE_LIST, samplePageData } from '../data/const';
+import { Button } from '../uiRenderer/store/web/Button/markup';
+import size from 'lodash/size';
+import { Modal } from 'antd';
+import getUniqId from '../utils/getUniqId';
 
 const App = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -23,14 +24,14 @@ const App = () => {
   }, []);
 
   const handleCreatePage = () => {
-    const pageId = "N"; // TODO:
+    const pageId = getUniqId();
     navigate(`create/${pageId}`);
   };
 
-  const handleOnEdit = (pageId) => navigate(`edit/${pageId}`);
-  const handleView = (pageId) => navigate(`view/${pageId}`);
-  const handleDelete = (pageId) => {
-    const newStoreList = list.filter((item) => item?.pageId !== pageId);
+  const handleOnEdit = pageId => navigate(`edit/${pageId}`);
+  const handleView = pageId => navigate(`view/${pageId}`);
+  const handleDelete = pageId => {
+    const newStoreList = list.filter(item => item?.pageId !== pageId);
 
     setList(newStoreList);
     store.set(PAGE_LIST, newStoreList);
@@ -43,7 +44,7 @@ const App = () => {
       storeList = [samplePageData];
     }
 
-    const pageList = storeList.map((page) => ({
+    const pageList = storeList.map(page => ({
       pageId: page?.pageId,
       ...page?.settings,
     }));
@@ -62,7 +63,7 @@ const App = () => {
       <Header extra={HeaderExtra} />
       <div className="pt-[4rem] w-full">
         <div className="grid grid-cols-4 gap-6 py-4 max-w-[1000px] m-auto">
-          {list.map((item) => (
+          {list.map(item => (
             <Card
               {...item}
               key={item?.pageId}
@@ -74,7 +75,7 @@ const App = () => {
         </div>
 
         <Modal
-          okButtonProps={{ type: "default", danger: true }}
+          okButtonProps={{ type: 'default', danger: true }}
           title="Delete the Page"
           open={isModalOpen}
           onOk={handleDelete}
