@@ -8,6 +8,7 @@ import { Button } from '../uiRenderer/store/web/Button/markup';
 import size from 'lodash/size';
 import { Modal } from 'antd';
 import getUniqId from '../utils/getUniqId';
+import { GitHubLogoIcon } from '@radix-ui/react-icons';
 
 const App = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -53,9 +54,19 @@ const App = () => {
   };
 
   const HeaderExtra = (
-    <Button variant="outline" onClick={handleCreatePage}>
-      New Page...
-    </Button>
+    <div className="flex gap-2 items-center">
+      <Button variant="outline" onClick={handleCreatePage}>
+        New Page...
+      </Button>
+      <GitHubLogoIcon
+        width={28}
+        height={28}
+        className="cursor-pointer"
+        onClick={() => {
+          navigate('intro');
+        }}
+      />
+    </div>
   );
 
   return (
