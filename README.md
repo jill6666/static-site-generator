@@ -1,70 +1,94 @@
-# Getting Started with Create React App
+# CUBE
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Description: Generate Static Site without Coding.
 
-## Available Scripts
+# Development
 
-In the project directory, you can run:
+Get Started!
 
-### `npm start`
+```bash
+yarn
+yarn start
+```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## src/uiConfigure
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Configurations for each Web Elements, what settings can be adjusted.
 
-### `npm test`
+The schema is aim to render the control panel with form, and the type in object is defined as 'FormStore' in src/uiRenderer/store.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+e.g. Accordion
 
-### `npm run build`
+```javascript
+const schema = {
+  name: { type: 'Input', label: 'Element Name' },
+  height: { type: 'Size', label: 'Height' },
+  width: { type: 'Size', label: 'Width' },
+  padding: { type: 'Distance', label: 'Padding' },
+  margin: { type: 'Distance', label: 'Margin' },
+  border: { type: 'Border', label: 'Border' },
+  borderRadius: { type: 'Size', label: 'Border Radius' },
+  twStyle: { type: 'Input', label: 'Style (tailwind)' },
+  triggerColor: { type: 'Color', label: 'Trigger Color' },
+  contentColor: { type: 'Color', label: 'Content Color' },
+  items: {
+    type: 'Repeater',
+    label: 'Accordion Content',
+    control: {
+      trigger: { type: 'Input', label: 'Trigger' },
+      content: { type: 'Input', label: 'Content' },
+    },
+  },
+};
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## src/uiRenderer
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Defind the render method of UI by schema, like form rendering and web components rendering. And store elements for rendering.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```javascript
+import { RenderSchema, RenderForm } from 'src/uiRenderer';
 
-### `npm run eject`
+const webPageSchema = [
+    {
+      id: "00001",
+      type: "Box",
+      props: {
+        name: "banner",
+        padding: ".5rem",
+        children: [
+          {
+            id: "10001",
+            type: "AspectRatio",
+            props: {
+              name: "bannerImg",
+              ratio: [21, 9],
+              imgUrl: "https://cataas.com/cat",
+            },
+          },
+        ],
+      },
+    }
+]
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+const formSchema = [
+    {
+        type: 'Input',
+        props: {
+            placeholder:'',
+            maxLength: 50,
+            autoComplete: "on",
+        }
+    }
+]
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+// render web page
+<Suspense fallback={<>OOPS! Something went wrong</>}>
+  <RenderSchema schema={webPageSchema} />
+</Suspense>;
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+// render control panel
+<Suspense fallback={<>OOPS! Something went wrong</>}>
+  <RenderForm schema={formSchema} />;
+</Suspense>;
+```
