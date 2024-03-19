@@ -1,11 +1,13 @@
+import getCurrentUser from '../../utils/getCurrentUser';
+
 const pageData = {
   pageId: '00000',
   settings: {
     backgroundColor: '#eee',
     title: 'This is SAMPLE.',
     imgUrl: 'https://cataas.com/cat',
-    updatedAt: '2024/02/10 00:00:00',
-    updatedBy: 'Sophia',
+    updatedAt: new Date().toUTCString(),
+    updatedBy: getCurrentUser(),
     enabled: true,
   },
   schema: [

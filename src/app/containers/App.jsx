@@ -20,8 +20,14 @@ const App = () => {
 
   useEffect(() => {
     const init = () => {
-      const pages = getList();
-      setList(pages);
+      let storeList = store.get(PAGE_LIST, []);
+
+      if (!size(storeList)) {
+        store.set(PAGE_LIST, [samplePageData]);
+        storeList = [samplePageData];
+      }
+
+      setList(storeList);
     };
 
     init();
@@ -44,14 +50,16 @@ const App = () => {
     };
 
     pageList.push(newItemData);
-    setList(pageList.map(i => ({ ...i, ...i?.settings })));
+
+    setList(pageList);
     store.set(PAGE_LIST, pageList);
   };
   const handleDelete = () => {
     const newStoreList = store.get(PAGE_LIST, []).filter(item => item?.pageId !== pageId);
 
-    setList(newStoreList.map(i => ({ ...i, ...i?.settings })));
+    setList(newStoreList);
     store.set(PAGE_LIST, newStoreList);
+
     setIsModalOpen(false);
   };
   const getNewSettingsData = settings => {
@@ -61,22 +69,6 @@ const App = () => {
 
     const newSettingsData = { ...settings, updatedAt, updatedBy, enabled };
     return newSettingsData;
-  };
-
-  const getList = () => {
-    let storeList = store.get(PAGE_LIST, []);
-
-    if (!size(storeList)) {
-      store.set(PAGE_LIST, [samplePageData]);
-      storeList = [samplePageData];
-    }
-
-    const pageList = storeList.map(page => ({
-      pageId: page?.pageId,
-      ...page?.settings,
-    }));
-
-    return pageList;
   };
 
   const HeaderExtra = (
@@ -102,7 +94,10 @@ const App = () => {
         <div className="grid grid-cols-4 gap-6 py-4 max-w-[1000px] m-auto">
           {list.map(item => (
             <Card
-              {...item}
+              imgUrl={item?.settings?.imgUrl}
+              title={item?.settings?.title}
+              updatedAt={item?.settings?.updatedAt}
+              updatedBy={item?.settings?.updatedBy}
               key={item?.pageId}
               onEdit={() => handleOnEdit(item?.pageId)}
               onView={() => handlePreview(item?.pageId)}
