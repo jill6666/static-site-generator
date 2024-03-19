@@ -11,6 +11,7 @@ import store from 'store2';
 import { PAGE_LIST, defaultPageSchema } from '../data/const';
 import { useSelector } from 'react-redux';
 import { pageSelector } from '../data/pageSlice';
+import getCurrentUser from '../utils/getCurrentUser';
 
 const Edit = () => {
   const schema = useSelector(pageSelector.schema);
@@ -21,7 +22,7 @@ const Edit = () => {
     const init = () => {
       const storePageData = store.get(PAGE_LIST, []).find(page => page?.pageId === pageId) || defaultPageSchema;
 
-      redux.updateControlId(storePageData?.schema?.[0]?.id);
+      redux.updateControlId(null);
       redux.updateSettings(storePageData?.settings);
       redux.updateSchema(storePageData?.schema);
     };
@@ -30,7 +31,9 @@ const Edit = () => {
   }, []);
 
   const handleOnSave = () => {
-    const newData = { pageId, settings, schema };
+    const newSettings = getNewSettingsData();
+
+    const newData = { pageId, settings: newSettings, schema };
 
     let pageList = store.get(PAGE_LIST || []);
     const index = pageList.findIndex(page => page?.pageId === pageId);
@@ -44,6 +47,15 @@ const Edit = () => {
   const handlePreview = () => {
     const goToUrl = `${window.location.protocol}//${window.location.host}/view/${pageId}`;
     window.open(goToUrl);
+  };
+
+  const getNewSettingsData = () => {
+    const updatedBy = getCurrentUser();
+    const updatedAt = new Date().toUTCString();
+    const enabled = true;
+
+    const newSettingsData = { ...settings, updatedAt, updatedBy, enabled };
+    return newSettingsData;
   };
 
   const addsOnButtons = [
