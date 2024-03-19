@@ -12,6 +12,7 @@ import { PAGE_LIST, defaultPageSchema } from '../data/const';
 import { useSelector } from 'react-redux';
 import { pageSelector } from '../data/pageSlice';
 import getCurrentUser from '../utils/getCurrentUser';
+import handlePreview from '../utils/handlePreview';
 
 const Edit = () => {
   const schema = useSelector(pageSelector.schema);
@@ -44,11 +45,6 @@ const Edit = () => {
     store.set(PAGE_LIST, pageList);
   };
 
-  const handlePreview = () => {
-    const goToUrl = `${window.location.protocol}//${window.location.host}/view/${pageId}`;
-    window.open(goToUrl);
-  };
-
   const getNewSettingsData = () => {
     const updatedBy = getCurrentUser();
     const updatedAt = new Date().toUTCString();
@@ -62,7 +58,7 @@ const Edit = () => {
     {
       text: 'Preview in Tab',
       value: 'inTab',
-      onClick: handlePreview,
+      onClick: () => handlePreview(pageId),
       variant: 'link',
     },
     { text: 'Save', value: 'save', onClick: handleOnSave, variant: 'default' },

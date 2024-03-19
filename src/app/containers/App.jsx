@@ -9,10 +9,12 @@ import size from 'lodash/size';
 import { Modal } from 'antd';
 import getUniqId from '../utils/getUniqId';
 import { GitHubLogoIcon } from '@radix-ui/react-icons';
+import handlePreview from '../utils/handlePreview';
 
 const App = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [list, setList] = useState([]);
+  const [pageId, setPageId] = useState(null);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -30,13 +32,16 @@ const App = () => {
   };
 
   const handleOnEdit = pageId => navigate(`edit/${pageId}`);
-  const handleView = pageId => navigate(`view/${pageId}`);
-  const handleDelete = pageId => {
-    const newStoreList = list.filter(item => item?.pageId !== pageId);
 
-    setList(newStoreList);
+  const handleDelete = () => {
+    const newList = list.filter(item => item?.pageId !== pageId);
+    const newStoreList = store.get(PAGE_LIST, []).filter(item => item?.pageId !== pageId);
+
+    setList(newList);
     store.set(PAGE_LIST, newStoreList);
+    setIsModalOpen(false);
   };
+
   const getList = () => {
     let storeList = store.get(PAGE_LIST, []);
 
@@ -79,8 +84,11 @@ const App = () => {
               {...item}
               key={item?.pageId}
               onEdit={() => handleOnEdit(item?.pageId)}
-              onView={() => handleView(item?.pageId)}
-              onDelete={() => setIsModalOpen(true)}
+              onView={() => handlePreview(item?.pageId)}
+              onDelete={() => {
+                setIsModalOpen(true);
+                setPageId(item?.pageId);
+              }}
             />
           ))}
         </div>
