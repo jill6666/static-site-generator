@@ -10,6 +10,7 @@ import { Modal } from 'antd';
 import getUniqId from '../utils/getUniqId';
 import { GitHubLogoIcon } from '@radix-ui/react-icons';
 import handlePreview from '../utils/handlePreview';
+import getCurrentUser from '../utils/getCurrentUser';
 
 const App = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -38,7 +39,7 @@ const App = () => {
     const targetPageData = pageList.find(item => item?.pageId === pageId);
     const newItemData = {
       ...targetPageData,
-      settings: { ...targetPageData?.settings, title: `${targetPageData?.settings?.title} - Copy` },
+      settings: { ...getNewSettingsData(targetPageData?.settings), title: `${targetPageData?.settings?.title} - Copy` },
       pageId: getUniqId(),
     };
 
@@ -52,6 +53,14 @@ const App = () => {
     setList(newStoreList.map(i => ({ ...i, ...i?.settings })));
     store.set(PAGE_LIST, newStoreList);
     setIsModalOpen(false);
+  };
+  const getNewSettingsData = settings => {
+    const updatedBy = getCurrentUser();
+    const updatedAt = new Date().toUTCString();
+    const enabled = true;
+
+    const newSettingsData = { ...settings, updatedAt, updatedBy, enabled };
+    return newSettingsData;
   };
 
   const getList = () => {
