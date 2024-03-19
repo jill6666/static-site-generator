@@ -4,7 +4,7 @@ const pageData = {
   pageId: '00000',
   settings: {
     backgroundColor: '#eee',
-    title: 'This is SAMPLE.',
+    title: 'This is a SAMPLE.',
     imgUrl: 'https://cataas.com/cat',
     updatedAt: new Date().toUTCString(),
     updatedBy: getCurrentUser(),
