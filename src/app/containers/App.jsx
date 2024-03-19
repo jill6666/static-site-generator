@@ -32,12 +32,24 @@ const App = () => {
   };
 
   const handleOnEdit = pageId => navigate(`edit/${pageId}`);
+  const handleOnCopy = pageId => {
+    let pageList = store.get(PAGE_LIST);
 
+    const targetPageData = pageList.find(item => item?.pageId === pageId);
+    const newItemData = {
+      ...targetPageData,
+      settings: { ...targetPageData?.settings, title: `${targetPageData?.settings?.title} - Copy` },
+      pageId: getUniqId(),
+    };
+
+    pageList.push(newItemData);
+    setList(pageList.map(i => ({ ...i, ...i?.settings })));
+    store.set(PAGE_LIST, pageList);
+  };
   const handleDelete = () => {
-    const newList = list.filter(item => item?.pageId !== pageId);
     const newStoreList = store.get(PAGE_LIST, []).filter(item => item?.pageId !== pageId);
 
-    setList(newList);
+    setList(newStoreList.map(i => ({ ...i, ...i?.settings })));
     store.set(PAGE_LIST, newStoreList);
     setIsModalOpen(false);
   };
@@ -85,6 +97,7 @@ const App = () => {
               key={item?.pageId}
               onEdit={() => handleOnEdit(item?.pageId)}
               onView={() => handlePreview(item?.pageId)}
+              onCopy={() => handleOnCopy(item?.pageId)}
               onDelete={() => {
                 setIsModalOpen(true);
                 setPageId(item?.pageId);
