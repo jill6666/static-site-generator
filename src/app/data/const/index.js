@@ -2,6 +2,7 @@ import samplePageData from './samplePageData';
 import getUniqId from '../../utils/getUniqId';
 
 export const PAGE_LIST = 'pageList';
+export const PAGE_ASSETS_TEMPLATE = 'pageAssetsTemplate';
 export const defaultPageSchema = {
   settings: {
     backgroundColor: '#eee',

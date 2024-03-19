@@ -13,6 +13,7 @@ import { Button } from '../../uiRenderer/store/web/Button/markup';
 import getUpdateSchema from '../utils/getUpdateSchema';
 import getParentObject from '../utils/getParentObject';
 import getUniqId from '../utils/getUniqId';
+import { message } from 'antd';
 
 const AssetsPanel = () => {
   const [active, setActive] = useState(0);
@@ -32,6 +33,24 @@ const AssetsPanel = () => {
     redux.updateSchema(newSchema);
   };
 
+  const treeMapOnContextMenu = node => {
+    console.log('node', node);
+    const id = node?.id;
+    if (!id) return;
+
+    message.success(`Right Click! ID: ${id}`);
+    // TODO:
+    const handleDeleteElement = id => {};
+    const handleAddToTemplate = id => {};
+
+    // TODO: phase 2
+    const handleCopyElement = id => {};
+    const handleCutElement = id => {};
+    const handlePasteElement = id => {};
+
+    return;
+  };
+
   const handleAddElement = key => {
     const parentProps = getParentObject(controlId, pageSchema);
     const newElementProps = getElementDefaultProps(key);
@@ -45,10 +64,18 @@ const AssetsPanel = () => {
     redux.updateSchema(newSchema);
   };
 
+  const treeProps = {
+    data: treeData,
+    active: controlId,
+    onClick: treeMapOnClick,
+    onDrop: treeMapOnDrop,
+    onContextMenu: treeMapOnContextMenu,
+  };
+
   const tabItems = [
     {
       tab: 'Current',
-      content: <TreeMap data={treeData} active={controlId} onClick={treeMapOnClick} onDrop={treeMapOnDrop} />,
+      content: <TreeMap {...treeProps} />,
     },
     {
       tab: 'All',

@@ -1,18 +1,10 @@
-import { useState, useEffect, useRef } from "react";
-import {
-  Tree,
-  getBackendOptions,
-  MultiBackend,
-} from "@minoru/react-dnd-treeview";
-import { DndProvider } from "react-dnd";
-import {
-  ChevronDownIcon,
-  ChevronRightIcon,
-  EyeNoneIcon,
-} from "@radix-ui/react-icons";
-import isArray from "lodash/isArray";
+import { useState, useEffect, useRef } from 'react';
+import { Tree, getBackendOptions, MultiBackend } from '@minoru/react-dnd-treeview';
+import { DndProvider } from 'react-dnd';
+import { ChevronDownIcon, ChevronRightIcon, EyeNoneIcon } from '@radix-ui/react-icons';
+import isArray from 'lodash/isArray';
 
-const Dnd = ({ data, active, onClick, onDrop }) => {
+const Dnd = ({ data, active, onClick, onDrop, onContextMenu }) => {
   const ref = useRef(null);
   const [treeData, setTreeData] = useState([]);
 
@@ -29,7 +21,7 @@ const Dnd = ({ data, active, onClick, onDrop }) => {
     onDrop && onDrop(newTreeData, opts);
   };
 
-  const handleOnClick = (id) => {
+  const handleOnClick = id => {
     onClick && onClick({ id });
   };
 
@@ -38,7 +30,7 @@ const Dnd = ({ data, active, onClick, onDrop }) => {
 
   return (
     <>
-      <div className="w-full flex gap-2 justify-end px-4">
+      <div className="w-full flex gap-2 justify-end px-4 pb-1">
         <EyeNoneIcon className="cursor-pointer" onClick={handleCloseAll} />
       </div>
       <div className="drag-wrapper">
@@ -56,15 +48,19 @@ const Dnd = ({ data, active, onClick, onDrop }) => {
               const isActive = node?.id === active;
 
               const props = {
+                onContextMenu: e => {
+                  e?.preventDefault();
+                  onContextMenu && onContextMenu(node);
+                },
                 onClick: () => {
                   handleOnClick(node?.id);
                   onToggle();
                 },
                 style: {
                   paddingLeft: depth * 23 + 12,
-                  color: isActive ? "#555" : "",
-                  fontWeight: isActive ? "bold" : "",
-                  backgroundColor: isActive ? "#eee" : "",
+                  color: isActive ? '#555' : '',
+                  fontWeight: isActive ? 'bold' : '',
+                  backgroundColor: isActive ? '#eee' : '',
                 },
               };
 
