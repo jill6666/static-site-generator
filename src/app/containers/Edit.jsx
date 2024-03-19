@@ -42,9 +42,7 @@ const Edit = () => {
   };
 
   const handlePreview = () => {
-    const currentHost = `${window.location.protocol}://${window.location.host}`;
-    const goToUrl = `${currentHost}/view/${pageId}`;
-
+    const goToUrl = `${window.location.protocol}//${window.location.host}/view/${pageId}`;
     window.open(goToUrl);
   };
 
