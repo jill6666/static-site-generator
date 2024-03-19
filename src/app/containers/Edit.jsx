@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import Header from '../components/Header';
 import AssetsPanel from '../partial/AssetsPanel';
 import ControlPanel from '../partial/ControlPanel';
@@ -8,21 +8,21 @@ import redux from '../data/redux';
 import { ResizableHandle, ResizablePanel, ResizablePanelGroup } from '../components/Resizable';
 import Button from '../../uiRenderer/store/web/Button';
 import store from 'store2';
-import { PAGE_LIST } from '../data/const';
+import { PAGE_LIST, defaultPageSchema } from '../data/const';
 import { useSelector } from 'react-redux';
 import { pageSelector } from '../data/pageSlice';
 
 const Edit = () => {
   const schema = useSelector(pageSelector.schema);
-  const navigate = useNavigate();
+  const settings = useSelector(pageSelector.settings);
   const { pageId } = useParams();
 
   useEffect(() => {
     const init = () => {
-      const storePageData = store.get(PAGE_LIST, []).find(page => page?.pageId === pageId);
+      const storePageData = store.get(PAGE_LIST, []).find(page => page?.pageId === pageId) || defaultPageSchema;
 
-      if (!storePageData) return;
       redux.updateControlId(storePageData?.schema?.[0]?.id);
+      redux.updateSettings(storePageData?.settings);
       redux.updateSchema(storePageData?.schema);
     };
 
@@ -30,15 +30,23 @@ const Edit = () => {
   }, []);
 
   const handleOnSave = () => {
+    const newData = { pageId, settings, schema };
+
     let pageList = store.get(PAGE_LIST || []);
     const index = pageList.findIndex(page => page?.pageId === pageId);
-    if (index === -1) return;
 
-    pageList[index] = { ...pageList[index], schema };
+    if (index === -1) pageList.push(newData);
+    else pageList[index] = newData;
+
     store.set(PAGE_LIST, pageList);
   };
 
-  const handlePreview = () => navigate(`/view/${pageId}`);
+  const handlePreview = () => {
+    const currentHost = `${window.location.protocol}://${window.location.host}`;
+    const goToUrl = `${currentHost}/view/${pageId}`;
+
+    window.open(goToUrl);
+  };
 
   const addsOnButtons = [
     {

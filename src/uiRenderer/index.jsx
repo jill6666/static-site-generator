@@ -15,10 +15,13 @@ const RenderSchema = ({ schema, isClient }) => {
 
   schema &&
     schema.forEach((item, index) => {
-      const id = item?.id || index;
+      const id = item?.id;
+
+      if (!id) console.warn('Component has no id. Check the validation.');
+
       const { type, props } = item;
       const Component = UIStore?.[type];
-      console.log('props', props);
+
       if (!Component) return null;
       const Element = createElement(UIStore?.[type], props);
 

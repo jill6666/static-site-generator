@@ -13,6 +13,7 @@ import Intro from './app/containers/Intro';
 const router = createBrowserRouter([
   { path: '/', element: <App />, errorElement: <ErrorPage /> },
   { path: 'edit/:pageId', element: <Edit />, errorElement: <ErrorPage /> },
+  { path: 'create/:pageId', element: <Edit />, errorElement: <ErrorPage /> },
   { path: 'view/:pageId', element: <View />, errorElement: <ErrorPage /> },
   { path: 'intro', element: <Intro />, errorElement: <ErrorPage /> },
   { path: '*', element: <ErrorPage /> },
