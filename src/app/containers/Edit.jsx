@@ -1,20 +1,16 @@
-import { useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
-import Header from "../components/Header";
-import AssetsPanel from "../partial/AssetsPanel";
-import ControlPanel from "../partial/ControlPanel";
-import PreviewPanel from "../partial/PreviewPanel";
-import redux from "../data/redux";
-import {
-  ResizableHandle,
-  ResizablePanel,
-  ResizablePanelGroup,
-} from "../components/Resizable";
-import Button from "../uiRenderer/store/web/Button";
-import store from "store2";
-import { PAGE_LIST } from "../data/const";
-import { useSelector } from "react-redux";
-import { pageSelector } from "../data/pageSlice";
+import { useEffect } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
+import Header from '../components/Header';
+import AssetsPanel from '../partial/AssetsPanel';
+import ControlPanel from '../partial/ControlPanel';
+import PreviewPanel from '../partial/PreviewPanel';
+import redux from '../data/redux';
+import { ResizableHandle, ResizablePanel, ResizablePanelGroup } from '../components/Resizable';
+import Button from '../../uiRenderer/store/web/Button';
+import store from 'store2';
+import { PAGE_LIST } from '../data/const';
+import { useSelector } from 'react-redux';
+import { pageSelector } from '../data/pageSlice';
 
 const Edit = () => {
   const schema = useSelector(pageSelector.schema);
@@ -23,9 +19,7 @@ const Edit = () => {
 
   useEffect(() => {
     const init = () => {
-      const storePageData = store
-        .get(PAGE_LIST, [])
-        .find((page) => page?.pageId === pageId);
+      const storePageData = store.get(PAGE_LIST, []).find(page => page?.pageId === pageId);
 
       if (!storePageData) return;
       redux.updateControlId(storePageData?.schema?.[0]?.id);
@@ -37,7 +31,7 @@ const Edit = () => {
 
   const handleOnSave = () => {
     let pageList = store.get(PAGE_LIST || []);
-    const index = pageList.findIndex((page) => page?.pageId === pageId);
+    const index = pageList.findIndex(page => page?.pageId === pageId);
     if (index === -1) return;
 
     pageList[index] = { ...pageList[index], schema };
@@ -48,19 +42,19 @@ const Edit = () => {
 
   const addsOnButtons = [
     {
-      text: "Preview in Tab",
-      value: "inTab",
+      text: 'Preview in Tab',
+      value: 'inTab',
       onClick: handlePreview,
-      variant: "link",
+      variant: 'link',
     },
-    { text: "Save", value: "save", onClick: handleOnSave, variant: "default" },
+    { text: 'Save', value: 'save', onClick: handleOnSave, variant: 'default' },
   ];
   return (
     <div>
       <Header
         extra={
           <div className="flex gap-4">
-            {addsOnButtons.map((i) => (
+            {addsOnButtons.map(i => (
               <Button {...i} className="border rounded-md px-4 py-1" />
             ))}
           </div>
@@ -69,7 +63,7 @@ const Edit = () => {
       <ResizablePanelGroup
         direction="horizontal"
         className="pt-[4rem] flex border h-[100vh] overflow-y-scroll"
-        style={{ height: "100vh" }}
+        style={{ height: '100vh' }}
       >
         <ResizablePanel>
           <AssetsPanel />

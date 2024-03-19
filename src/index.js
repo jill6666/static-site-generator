@@ -2,13 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import App from './containers/App';
-import Edit from './containers/Edit';
-import ErrorPage from './containers/ErrorPage';
-import { store } from './data/store';
+import App from './app/containers/App';
+import Edit from './app/containers/Edit';
+import ErrorPage from './app/containers/ErrorPage';
+import { store } from './app/data/store';
 import { Provider } from 'react-redux';
-import View from './containers/View';
-import Intro from './containers/Intro';
+import View from './app/containers/View';
+import Intro from './app/containers/Intro';
 
 const router = createBrowserRouter([
   { path: '/', element: <App />, errorElement: <ErrorPage /> },

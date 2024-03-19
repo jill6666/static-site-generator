@@ -1,7 +1,7 @@
-import React, { createElement } from "react";
-import { UIStore, FormStore } from "./store";
-import redux from "../data/redux";
-import { Form, Typography } from "antd";
+import React, { createElement } from 'react';
+import { UIStore, FormStore } from './store';
+import { Form } from 'antd';
+import redux from '../app/data/redux';
 
 const RenderSchema = ({ schema, isClient }) => {
   const ResultMarkups = [];
@@ -18,14 +18,14 @@ const RenderSchema = ({ schema, isClient }) => {
       const id = item?.id || index;
       const { type, props } = item;
       const Component = UIStore?.[type];
-
+      console.log('props', props);
       if (!Component) return null;
       const Element = createElement(UIStore?.[type], props);
 
       ResultMarkups.push(
-        <div data-id={id} key={id} onClick={(e) => handleOnClick(e, id)}>
+        <div data-id={id} key={id} onClick={e => handleOnClick(e, id)}>
           {Element}
-        </div>
+        </div>,
       );
     });
 
@@ -44,7 +44,7 @@ const RenderForm = ({ id, schema, initialValues = {}, onChange }) => {
       name={id}
       layout="vertical"
       form={form}
-      style={{ maxWidth: 600, padding: ".5rem" }}
+      style={{ maxWidth: 600, padding: '.5rem' }}
       autoComplete="off"
       initialValues={initialValues}
       onChange={handleOnChange}

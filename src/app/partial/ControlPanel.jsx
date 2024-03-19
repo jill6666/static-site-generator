@@ -1,9 +1,9 @@
-import redux from "../data/redux";
-import { useSelector } from "react-redux";
-import { pageSelector } from "../data/pageSlice";
-import getUpdateSchema from "../utils/getUpdateSchema";
-import { RenderForm } from "../uiRenderer";
-import { UIConfigure } from "../uiConfigure";
+import redux from '../data/redux';
+import { useSelector } from 'react-redux';
+import { pageSelector } from '../data/pageSlice';
+import getUpdateSchema from '../utils/getUpdateSchema';
+import { RenderForm } from '../../uiRenderer';
+import { UIConfigure } from '../../uiConfigure';
 
 const ControlPanel = () => {
   const controlId = useSelector(pageSelector.controlId);
@@ -11,7 +11,7 @@ const ControlPanel = () => {
   const target = deepFindObjectById(controlId, schema);
   const formSchema = UIConfigure?.[target?.type];
 
-  const handleOnChange = (values) => {
+  const handleOnChange = values => {
     const updatedData = getUpdateSchema(controlId, values, schema);
 
     redux.updateSchema(updatedData);
@@ -27,12 +27,7 @@ const ControlPanel = () => {
         </div>
       )}
 
-      <RenderForm
-        id={controlId}
-        schema={{ ...formSchema }}
-        initialValues={target?.props}
-        onChange={handleOnChange}
-      />
+      <RenderForm id={controlId} schema={{ ...formSchema }} initialValues={target?.props} onChange={handleOnChange} />
     </div>
   );
 };

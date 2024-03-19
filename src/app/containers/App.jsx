@@ -4,7 +4,7 @@ import Card from '../components/Card';
 import { useNavigate } from 'react-router-dom';
 import store from 'store2';
 import { PAGE_LIST, samplePageData } from '../data/const';
-import { Button } from '../uiRenderer/store/web/Button/markup';
+import { Button } from '../../uiRenderer/store/web/Button/markup';
 import size from 'lodash/size';
 import { Modal } from 'antd';
 import getUniqId from '../utils/getUniqId';

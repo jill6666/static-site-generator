@@ -1,14 +1,14 @@
 import { useSelector } from 'react-redux';
 import { pageSelector } from '../data/pageSlice';
 import TreeMap from '../components/TreeMap';
-import TabsMarkup from '../uiRenderer/store/web/Tabs/markup';
+import TabsMarkup from '../../uiRenderer/store/web/Tabs/markup';
 import convertSchemaToTree from '../utils/convertSchemaToTree';
 import flashElement from '../utils/flashElement';
 import getNewSchemaByDragOpt from '../utils/getNewSchemaByDragOpt';
 import redux from '../data/redux';
-import { UIStore } from '../uiRenderer/store';
+import { UIStore } from '../../uiRenderer/store';
 import { PlusIcon } from '@radix-ui/react-icons';
-import { Button } from '../uiRenderer/store/web/Button/markup';
+import { Button } from '../../uiRenderer/store/web/Button/markup';
 import getUpdateSchema from '../utils/getUpdateSchema';
 import getParentObject from '../utils/getParentObject';
 import getUniqId from '../utils/getUniqId';
