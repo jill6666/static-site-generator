@@ -79,7 +79,7 @@ const Edit = () => {
         className="pt-[4rem] flex border h-[100vh] overflow-y-scroll"
         style={{ height: '100vh' }}
       >
-        <ResizablePanel>
+        <ResizablePanel defaultSize={20}>
           <AssetsPanel />
         </ResizablePanel>
 
@@ -91,7 +91,7 @@ const Edit = () => {
 
         <ResizableHandle />
 
-        <ResizablePanel>
+        <ResizablePanel defaultSize={30}>
           <PreviewPanel />
         </ResizablePanel>
       </ResizablePanelGroup>
