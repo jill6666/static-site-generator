@@ -1,9 +1,10 @@
-import { Button as ButtonMarkup } from "./markup";
+import { Button as ButtonMarkup } from './markup';
+import { ReloadIcon } from '@radix-ui/react-icons';
 
 const Button = ({
   name,
-  text = "",
-  twStyle = "",
+  text = '',
+  twStyle = '',
   variant,
   size,
   color,
@@ -14,6 +15,7 @@ const Button = ({
   margin,
   border,
   borderRadius,
+  isLoading,
   ...props
 }) => {
   return (
@@ -33,7 +35,7 @@ const Button = ({
       }}
       {...props}
     >
-      {text}
+      {isLoading ? <ReloadIcon className="animate-spin" /> : text}
     </ButtonMarkup>
   );
 };

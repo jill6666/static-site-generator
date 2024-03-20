@@ -1,5 +1,5 @@
-import { useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
 import Header from '../components/Header';
 import AssetsPanel from '../partial/AssetsPanel';
 import ControlPanel from '../partial/ControlPanel';
@@ -18,6 +18,8 @@ const Edit = () => {
   const schema = useSelector(pageSelector.schema);
   const settings = useSelector(pageSelector.settings);
   const { pageId } = useParams();
+  const navigate = useNavigate();
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     const init = () => {
@@ -32,6 +34,7 @@ const Edit = () => {
   }, []);
 
   const handleOnSave = () => {
+    setIsLoading(true);
     const newSettings = getNewSettingsData();
 
     const newData = { pageId, settings: newSettings, schema };
@@ -43,6 +46,11 @@ const Edit = () => {
     else pageList[index] = newData;
 
     store.set(PAGE_LIST, pageList);
+
+    setTimeout(() => {
+      setIsLoading(false);
+      navigate('/');
+    }, 1000);
   };
 
   const getNewSettingsData = () => {
@@ -61,7 +69,7 @@ const Edit = () => {
       onClick: () => handlePreview(pageId),
       variant: 'link',
     },
-    { text: 'Save', value: 'save', onClick: handleOnSave, variant: 'default' },
+    { text: 'Save', value: 'save', onClick: handleOnSave, variant: 'default', isLoading },
   ];
   return (
     <div>
