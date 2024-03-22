@@ -1,6 +1,6 @@
 const getNewSchemaByDragOpt = (schema, opt, tree) => {
   const { dragSourceId, dropTargetId } = opt;
-  let updatedSchema = schema.map((item) => ({ ...item }));
+  let updatedSchema = schema.map(item => ({ ...item }));
   const target = findDroppedTarget(updatedSchema, dragSourceId);
 
   // Remove the dragged item from its original parent
@@ -11,9 +11,7 @@ const getNewSchemaByDragOpt = (schema, opt, tree) => {
 
   // Add the dropped source to the dropped target
   if (droppedTarget) {
-    const index = tree
-      .filter((item) => item?.parent === dropTargetId)
-      .findIndex((item) => item?.id === dragSourceId);
+    const index = tree.filter(item => item?.parent === dropTargetId).findIndex(item => item?.id === dragSourceId);
 
     const newProps = {
       id: dragSourceId,
@@ -25,12 +23,13 @@ const getNewSchemaByDragOpt = (schema, opt, tree) => {
     newChildren.splice(index, 0, newProps);
 
     droppedTarget.props = {
+      ...droppedTarget?.props,
       children: newChildren,
     };
   }
 
   // Remove any empty parent nodes
-  return updatedSchema.filter((item) => {
+  return updatedSchema.filter(item => {
     if (item?.props && item?.props?.children) {
       return item?.props?.children.length > 0;
     }
@@ -57,12 +56,12 @@ const findDroppedTarget = (data, dropTargetId) => {
 
 const removeDraggedItem = (data = [], dragSourceId) => {
   return data
-    .map((item) => {
+    .map(item => {
       let newItem = { ...item };
 
       if (newItem?.props && newItem?.props?.children) {
-        newItem["props"] = {
-          ...newItem["props"],
+        newItem['props'] = {
+          ...newItem['props'],
           children: removeDraggedItem(newItem?.props?.children, dragSourceId),
         };
       }
