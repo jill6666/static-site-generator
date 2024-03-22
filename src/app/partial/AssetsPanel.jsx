@@ -81,8 +81,8 @@ const AssetsPanel = () => {
       tab: 'All',
       content: (
         <div className="flex flex-col">
-          {Object.keys(UIStore).map(item => (
-            <div className="px-[12px] py-1 flex items-center justify-between gap-2 hover:bg-[#eee]">
+          {Object.keys(UIStore).map((item, idx) => (
+            <div key={item || idx} className="px-[12px] py-1 flex items-center justify-between gap-2 hover:bg-[#eee]">
               <p>{item}</p>
               <div className="flex items-center justify-between gap-2">
                 <Button size="icon" variant="ghost">
@@ -118,15 +118,15 @@ const AssetsPanel = () => {
         <div className="p-2 ml-4 border-l">
           <TabsMarkup.Tabs defaultValue={tabItems?.[0]?.tab} className="w-full">
             <TabsMarkup.TabsList className="grid w-full grid-cols-3">
-              {tabItems.map(item => (
-                <TabsMarkup.TabsTrigger key={item?.tab} value={item?.tab}>
+              {tabItems.map((item, idx) => (
+                <TabsMarkup.TabsTrigger key={item?.tab || idx} value={item?.tab}>
                   {item?.tab}
                 </TabsMarkup.TabsTrigger>
               ))}
             </TabsMarkup.TabsList>
 
-            {tabItems.map(item => (
-              <TabsMarkup.TabsContent key={item?.tab} value={item?.tab}>
+            {tabItems.map((item, idx) => (
+              <TabsMarkup.TabsContent key={item?.tab || idx} value={item?.tab}>
                 {item?.content}
               </TabsMarkup.TabsContent>
             ))}

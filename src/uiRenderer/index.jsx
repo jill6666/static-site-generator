@@ -59,7 +59,7 @@ const RenderForm = ({ id, schema, initialValues = {}, onChange }) => {
 
         form.setFieldValue(`${key}`, initialValues?.[key]);
 
-        const combinedProps = { ...value, name: `${key}` };
+        const combinedProps = { ...value, name: `${key}`, key: value?.id || key };
         return <Element {...combinedProps} />;
       })}
     </Form>

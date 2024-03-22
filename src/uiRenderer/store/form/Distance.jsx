@@ -1,7 +1,7 @@
-import { useState, useEffect } from "react";
-import InputWithAddonAfter from "./InputWithAddonAfter";
-import { LockClosedIcon, LockOpen1Icon } from "@radix-ui/react-icons";
-import { distances } from "../control/distance";
+import { useState, useEffect } from 'react';
+import InputWithAddonAfter from './InputWithAddonAfter';
+import { LockClosedIcon, LockOpen1Icon } from '@radix-ui/react-icons';
+import { distances } from '../control/distance';
 
 const FormDistance = ({ value, onChange }) => {
   const [locked, setLocked] = useState(false);
@@ -9,7 +9,7 @@ const FormDistance = ({ value, onChange }) => {
 
   useEffect(() => {
     const refineDefault2Content = (props, option) => {
-      const arr = props ? props?.split(" ") : [];
+      const arr = props ? props?.split(' ') : [];
       const result = option.map((item, idx) => ({
         ...item,
         value: arr?.[idx],
@@ -24,14 +24,14 @@ const FormDistance = ({ value, onChange }) => {
   }, [value]);
 
   const handleSelectOnChange = (val, index) => {
-    const disabled = val === "auto";
+    const disabled = val === 'auto';
     let newContent = [...content];
-    const value = disabled ? "" : newContent[index]?.value;
+    const value = disabled ? '' : newContent[index]?.value;
 
     newContent[index] = {
       ...newContent[index],
       disabled,
-      value: disabled ? "" : value,
+      value: disabled ? '' : value,
     };
 
     setContent(newContent);
@@ -56,35 +56,31 @@ const FormDistance = ({ value, onChange }) => {
       const oldVal = newContent[index];
       newContent[index] = { ...oldVal, value };
     } else {
-      newContent = newContent.map((i) => ({ ...i, value }));
+      newContent = newContent.map(i => ({ ...i, value }));
     }
 
-    const fieldValue = newContent.map((item) => item?.value).join(" ");
+    const fieldValue = newContent.map(item => item?.value).join(' ');
 
     onChange(fieldValue);
     setContent(newContent);
   };
 
-  const LockIcon = (args) =>
-    locked ? <LockClosedIcon {...args} /> : <LockOpen1Icon {...args} />;
+  const LockIcon = args => (locked ? <LockClosedIcon {...args} /> : <LockOpen1Icon {...args} />);
 
   return (
     <div className="relative">
-      <LockIcon
-        onClick={handleOnLock}
-        className="absolute cursor-pointer top-[-28px] right-4 z-10"
-      />
+      <LockIcon onClick={handleOnLock} className="absolute cursor-pointer top-[-28px] right-4 z-10" />
 
       <div className="grid grid-cols-2 gap-2">
         {content.map((item, index) => (
-          <div key={item?.name}>
+          <div key={item?.name || index}>
             <InputWithAddonAfter
               disabled={item?.disabled}
               placeholder={item?.placeholder}
               defaultValue={item?.value}
               type="number"
-              onChange={(val) => handleOnChange(val, index)}
-              addonOnChange={(val) => handleSelectOnChange(val, index)}
+              onChange={val => handleOnChange(val, index)}
+              addonOnChange={val => handleSelectOnChange(val, index)}
             />
           </div>
         ))}

@@ -1,50 +1,50 @@
-import { useState, useEffect } from "react";
-import { Input, Select } from "antd";
+import { useState, useEffect } from 'react';
+import { Input, Select } from 'antd';
 
-const unit = ["%", "px", "auto"];
+const unit = ['%', 'px', 'auto'];
 /**
  * defaultValue: 1px || auto || 100%
  */
 const InputWithAddonAfter = ({
   addonAfterOptions = unit,
   disabled,
-  placeholder = "",
-  defaultValue = "",
-  type = "",
+  placeholder = '',
+  defaultValue = '',
+  type = '',
   addonOnChange,
   onChange,
 }) => {
   const [option, setOption] = useState(addonAfterOptions?.[0]);
-  const [value, setValue] = useState("");
-  const opt = defaultValue
-    ? addonAfterOptions?.find((i) => defaultValue?.includes(i))
-    : option;
+  const [value, setValue] = useState('');
+  const opt = defaultValue ? addonAfterOptions?.find(i => defaultValue?.includes(i)) : option;
 
   useEffect(() => {
-    const val = defaultValue ? defaultValue?.slice(0, -opt?.length) : "";
+    const val = defaultValue ? defaultValue?.slice(0, -opt?.length) : '';
 
     setValue(val);
     setOption(opt);
   }, [defaultValue]);
 
-  const handleOnChange = (e) => {
+  const handleOnChange = e => {
     const value = e?.target?.value;
 
     setValue(value);
-    onChange && onChange(value ? `${value}${option}` : "");
+    onChange && onChange(value ? `${value}${option}` : '');
   };
 
-  const selectOnChange = (e) => {
+  const selectOnChange = e => {
     setOption(e);
-    onChange && onChange(value ? `${value}${e}` : "");
+    onChange && onChange(value ? `${value}${e}` : '');
     addonOnChange && addonOnChange(e);
   };
 
   const selectAfter = (
     <Select value={option} onChange={selectOnChange}>
       {addonAfterOptions &&
-        addonAfterOptions?.map((item) => (
-          <Select.Option value={item}>{item}</Select.Option>
+        addonAfterOptions?.map(item => (
+          <Select.Option key={item} value={item}>
+            {item}
+          </Select.Option>
         ))}
     </Select>
   );

@@ -1,13 +1,8 @@
-import React, { Suspense } from "react";
-import {
-  Tabs as TabsMarkup,
-  TabsContent,
-  TabsList,
-  TabsTrigger,
-} from "./markup";
-import size from "lodash/size";
+import React, { Suspense } from 'react';
+import { Tabs as TabsMarkup, TabsContent, TabsList, TabsTrigger } from './markup';
+import size from 'lodash/size';
 
-const RenderSchema = React.lazy(() => import("../../../index"));
+const RenderSchema = React.lazy(() => import('../../../index'));
 
 const Tabs = ({
   items = [],
@@ -22,20 +17,16 @@ const Tabs = ({
   children,
 }) => {
   return (
-    <TabsMarkup
-      defaultValue={items?.[0]?.tab?.text}
-      className="w-full"
-      style={{ width, margin }}
-    >
+    <TabsMarkup defaultValue={items?.[0]?.tab?.text} className="w-full" style={{ width, margin }}>
       <TabsList
         className="grid w-full"
         style={{
           gridTemplateColumns: `repeat(${size(items) || 1} , 1fr)`,
         }}
       >
-        {items.map((item) => (
+        {items.map((item, idx) => (
           <TabsTrigger
-            key={item?.tab?.text}
+            key={item?.tab?.text || idx}
             style={{
               color: tabColor || item?.tab?.color,
               fontWeight: item?.tab?.fontWeight,
@@ -49,10 +40,10 @@ const Tabs = ({
       </TabsList>
       {items.map((item, index) => (
         <TabsContent
-          key={item?.tab?.text}
+          key={item?.tab?.text || index}
           value={item?.tab?.text}
           style={{
-            height: "auto",
+            height: 'auto',
             padding,
             color: contentColor,
             background,

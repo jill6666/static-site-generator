@@ -76,8 +76,8 @@ const Edit = () => {
       <Header
         extra={
           <div className="flex gap-4">
-            {addsOnButtons.map(i => (
-              <Button {...i} className="border rounded-md px-4 py-1" />
+            {addsOnButtons.map((i, idx) => (
+              <Button key={i?.value || idx} {...i} className="border rounded-md px-4 py-1" />
             ))}
           </div>
         }

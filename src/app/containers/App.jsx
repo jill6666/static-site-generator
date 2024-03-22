@@ -92,13 +92,13 @@ const App = () => {
       <Header extra={HeaderExtra} />
       <div className="pt-[4rem] w-full">
         <div className="grid grid-cols-4 gap-6 py-4 max-w-[1000px] m-auto">
-          {list.map(item => (
+          {list.map((item, idx) => (
             <Card
               imgUrl={item?.settings?.imgUrl}
               title={item?.settings?.title}
               updatedAt={item?.settings?.updatedAt}
               updatedBy={item?.settings?.updatedBy}
-              key={item?.pageId}
+              key={item?.pageId || idx}
               onEdit={() => handleOnEdit(item?.pageId)}
               onView={() => handlePreview(item?.pageId)}
               onCopy={() => handleOnCopy(item?.pageId)}

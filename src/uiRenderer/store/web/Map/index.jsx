@@ -66,7 +66,7 @@ const Map = ({
               fullscreenControl={false}
             >
               {Boolean(positions.length) &&
-                positions.map(position => <Marker key={JSON.stringify(position)} position={position} />)}
+                positions.map((position, idx) => <Marker key={JSON.stringify(position) + idx} position={position} />)}
             </MapMarkup>
           </div>
         </APIProvider>

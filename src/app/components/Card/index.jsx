@@ -49,8 +49,8 @@ const Card = ({
         <CardDescription>By: {updatedBy}</CardDescription>
       </CardContent>
       <CardFooter className="w-full flex gap-4 p-4 pt-0 justify-between">
-        {btns.map(btn => (
-          <Button key={btn?.value} {...btn} size="icon">
+        {btns.map((btn, idx) => (
+          <Button key={btn?.value || idx} {...btn} size="icon">
             {btn?.icon}
           </Button>
         ))}
