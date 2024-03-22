@@ -98,7 +98,7 @@ const AssetsPanel = () => {
   ];
 
   return (
-    <>
+    <div className="h-full overflow-scroll">
       <div
         className="p-2 flex gap-2 items-center cursor-pointer"
         onClick={() => {
@@ -133,7 +133,7 @@ const AssetsPanel = () => {
           </TabsMarkup.Tabs>
         </div>
       )}
-    </>
+    </div>
   );
 };
 
