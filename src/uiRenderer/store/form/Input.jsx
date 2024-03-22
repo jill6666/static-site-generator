@@ -1,4 +1,4 @@
-import { Input } from "antd";
+import { Input } from 'antd';
 
 const FormInput = ({
   placeholder,
@@ -7,10 +7,12 @@ const FormInput = ({
   value,
   disabled,
   maxLength,
-  autoComplete = "on",
+  autoComplete = 'on',
+  readOnly,
 }) => {
   return (
     <Input
+      readOnly={readOnly}
       className="min-w-[160px]"
       placeholder={placeholder}
       onChange={onChange}
