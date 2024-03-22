@@ -33,7 +33,7 @@ const Dnd = ({ data, active, onClick, onDrop, onContextMenu }) => {
       <div className="w-full flex gap-2 justify-end px-4 pb-1">
         <EyeNoneIcon className="cursor-pointer" onClick={handleCloseAll} />
       </div>
-      <div className="drag-wrapper">
+      <div className="drag-wrapper py-2">
         <DndProvider backend={MultiBackend} options={getBackendOptions()}>
           <Tree
             ref={ref}
@@ -65,7 +65,7 @@ const Dnd = ({ data, active, onClick, onDrop, onContextMenu }) => {
               };
 
               return (
-                <div className="w-full flex items-center border my-1" {...props}>
+                <div className="w-full flex items-center my-1" {...props}>
                   {droppable && (
                     <span className="pr-2" onClick={onToggle}>
                       {isOpen ? <ChevronDownIcon /> : <ChevronRightIcon />}

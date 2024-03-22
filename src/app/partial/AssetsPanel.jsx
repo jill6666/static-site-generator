@@ -35,7 +35,6 @@ const AssetsPanel = () => {
   };
 
   const treeMapOnContextMenu = node => {
-    console.log('node', node);
     const id = node?.id;
     if (!id) return;
 
