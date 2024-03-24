@@ -1,7 +1,7 @@
 import { ref, get } from 'firebase/database';
 import db from './db';
 
-async function getPagesData() {
+export default async function getPageList() {
   const pagesRef = ref(db, 'pages/');
 
   try {
@@ -12,4 +12,3 @@ async function getPagesData() {
   }
   return;
 }
-export default getPagesData;

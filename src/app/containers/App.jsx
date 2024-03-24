@@ -9,8 +9,8 @@ import getUniqId from '../utils/getUniqId';
 import { GitHubLogoIcon } from '@radix-ui/react-icons';
 import handlePreview from '../utils/handlePreview';
 import getCurrentUser from '../utils/getCurrentUser';
-import getPagesData from '../data/firebase/getPagesData';
-import setPageList from '../data/firebase/setPageList';
+import getPagesData from '../data/firebase/getPageList';
+import setPageData from '../data/firebase/setPageData';
 
 const App = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -22,7 +22,10 @@ const App = () => {
     const init = async () => {
       const data = await getPagesData();
 
-      if (size(data)) setList(data);
+      if (size(data)) {
+        const res = Object.values(data);
+        setList(res);
+      }
     };
     init();
   }, []);
@@ -45,8 +48,9 @@ const App = () => {
 
     pageList.push(newItemData);
 
-    await setPageList({
-      newPageList: pageList,
+    await setPageData({
+      slug: newItemData.pageId,
+      props: newItemData,
       onSuccess: () => {
         setList(pageList);
         message.success('Copied!');
@@ -57,8 +61,9 @@ const App = () => {
   const handleDelete = async () => {
     const newPageList = list.filter(item => item?.pageId !== pageId);
 
-    await setPageList({
-      newPageList,
+    await setPageData({
+      slug: pageId,
+      props: null,
       onSuccess: () => {
         setList(newPageList);
         message.success('Deleted!');

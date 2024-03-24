@@ -1,17 +1,14 @@
-import { ref, onValue } from 'firebase/database';
+import { ref, get } from 'firebase/database';
 import db from './db';
 
-export default function getPageData({ index }) {
-  const pageRef = ref(db, 'pages/' + index);
+export default async function getPageData({ slug }) {
+  const pagesRef = ref(db, `pages/${slug}`);
 
-  return onValue(
-    pageRef,
-    snapshot => {
-      const pageData = snapshot.val();
-      return pageData;
-    },
-    {
-      onlyOnce: true,
-    },
-  );
+  try {
+    const snapshot = await get(pagesRef);
+    return snapshot.val();
+  } catch (e) {
+    console.error('Error getting data:', JSON.stringify(e));
+  }
+  return;
 }

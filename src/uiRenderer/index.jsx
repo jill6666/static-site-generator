@@ -2,6 +2,7 @@ import React, { createElement } from 'react';
 import { UIStore, FormStore } from './store';
 import { Form } from 'antd';
 import redux from '../app/data/redux';
+import size from 'lodash/size';
 
 const RenderSchema = ({ schema, isClient }) => {
   const ResultMarkups = [];
@@ -13,7 +14,7 @@ const RenderSchema = ({ schema, isClient }) => {
     redux.updateControlId(id);
   };
 
-  schema &&
+  size(schema) &&
     schema.forEach((item, index) => {
       const id = item?.id;
 

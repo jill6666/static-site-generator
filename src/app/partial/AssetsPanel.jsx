@@ -30,7 +30,6 @@ const AssetsPanel = () => {
   const treeMapOnDrop = (newTreeData, props) => {
     const newSchema = getNewSchemaByDragOpt(pageSchema, props, newTreeData);
 
-    console.log('newSchema', newSchema);
     redux.updateSchema(newSchema);
   };
 
