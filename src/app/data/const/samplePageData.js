@@ -240,7 +240,7 @@ const pageData = {
                   type: 'Text',
                   props: {
                     name: 'address',
-                    text: "8F., No. 225-C棟, Sec. 2, Chang'an E. Rd., Songshan Dist., Taipei City 105, Taiwan (R.O.C.)",
+                    text: '845 Avison Way, Vancouver, BC V6G 3E2',
                     fontSize: '14px',
                     fontWeight: '300',
                   },
