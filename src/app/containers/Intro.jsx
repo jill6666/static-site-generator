@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import 'react-notion/src/styles.css';
 import 'prismjs/themes/prism-tomorrow.css';
 import { NotionRenderer } from 'react-notion';
+import Header from '../components/Header';
+import Button from '../../uiRenderer/store/web/Button';
 
 const Intro = () => {
   const [blockMap, setBlockMap] = useState([]);
@@ -21,8 +23,11 @@ const Intro = () => {
   };
 
   return (
-    <div className="max-w-[800px] p-8 m-auto min-h-screen">
-      <NotionRenderer blockMap={blockMap} />
+    <div>
+      <Header />
+      <div className="pt-[4rem] max-w-[800px] p-8 m-auto min-h-screen">
+        <NotionRenderer blockMap={blockMap} />
+      </div>
     </div>
   );
 };
