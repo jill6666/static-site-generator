@@ -9,6 +9,10 @@ import { store } from './app/data/store';
 import { Provider } from 'react-redux';
 import View from './app/containers/View';
 import Intro from './app/containers/Intro';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { Buffer } from 'buffer';
+import { WagmiProvider } from 'wagmi';
+import { config } from './wagmi';
 
 const router = createBrowserRouter([
   { path: '/', element: <App />, errorElement: <ErrorPage /> },
@@ -19,10 +23,18 @@ const router = createBrowserRouter([
   { path: '*', element: <ErrorPage /> },
 ]);
 
+window.Buffer = Buffer;
+
+const queryClient = new QueryClient();
+
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <Provider store={store}>
-      <RouterProvider router={router} />
-    </Provider>
+    <WagmiProvider config={config}>
+      <QueryClientProvider client={queryClient}>
+        <Provider store={store}>
+          <RouterProvider router={router} />
+        </Provider>
+      </QueryClientProvider>
+    </WagmiProvider>
   </React.StrictMode>,
 );

@@ -8,6 +8,8 @@ import Map from './creator/Map';
 import Tabs from './creator/Tabs';
 import Text from './creator/Text';
 import Progress from './creator/Progress';
+import BuyMeACoffee from './creator/BuyMeACoffee';
+
 import { PageSettings } from './store/schema';
 
 export const PageConfigure = { ...PageSettings };
@@ -23,4 +25,5 @@ export const UIConfigure = {
   Progress, // 進度條
   Tabs,
   Text,
+  BuyMeACoffee,
 };
