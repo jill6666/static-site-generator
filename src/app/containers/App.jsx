@@ -2,15 +2,15 @@ import React, { useState, useEffect } from 'react';
 import Header from '../components/Header';
 import Card from '../components/Card';
 import { useNavigate } from 'react-router-dom';
-import store from 'store2';
-import { PAGE_LIST, samplePageData } from '../data/const';
 import { Button } from '../../uiRenderer/store/web/Button/markup';
 import size from 'lodash/size';
-import { Modal } from 'antd';
+import { Modal, message } from 'antd';
 import getUniqId from '../utils/getUniqId';
 import { GitHubLogoIcon } from '@radix-ui/react-icons';
 import handlePreview from '../utils/handlePreview';
 import getCurrentUser from '../utils/getCurrentUser';
+import getPagesData from '../data/firebase/getPagesData';
+import setPageList from '../data/firebase/setPageList';
 
 const App = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -19,17 +19,11 @@ const App = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const init = () => {
-      let storeList = store.get(PAGE_LIST, []);
+    const init = async () => {
+      const data = await getPagesData();
 
-      if (!size(storeList)) {
-        store.set(PAGE_LIST, [samplePageData]);
-        storeList = [samplePageData];
-      }
-
-      setList(storeList);
+      if (size(data)) setList(data);
     };
-
     init();
   }, []);
 
@@ -39,8 +33,8 @@ const App = () => {
   };
 
   const handleOnEdit = pageId => navigate(`edit/${pageId}`);
-  const handleOnCopy = pageId => {
-    let pageList = store.get(PAGE_LIST);
+  const handleOnCopy = async pageId => {
+    let pageList = list;
 
     const targetPageData = pageList.find(item => item?.pageId === pageId);
     const newItemData = {
@@ -51,14 +45,26 @@ const App = () => {
 
     pageList.push(newItemData);
 
-    setList(pageList);
-    store.set(PAGE_LIST, pageList);
+    await setPageList({
+      newPageList: pageList,
+      onSuccess: () => {
+        setList(pageList);
+        message.success('Copied!');
+      },
+      onError: () => message.error('Oops! Something wrong!'),
+    });
   };
-  const handleDelete = () => {
-    const newStoreList = store.get(PAGE_LIST, []).filter(item => item?.pageId !== pageId);
+  const handleDelete = async () => {
+    const newPageList = list.filter(item => item?.pageId !== pageId);
 
-    setList(newStoreList);
-    store.set(PAGE_LIST, newStoreList);
+    await setPageList({
+      newPageList,
+      onSuccess: () => {
+        setList(newPageList);
+        message.success('Deleted!');
+      },
+      onError: () => message.error('Oops! Something wrong!'),
+    });
 
     setIsModalOpen(false);
   };
