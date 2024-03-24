@@ -17,6 +17,5 @@ try {
 } catch (e) {
   console.error('Firebase initialization error', JSON.stringify(e));
 }
-console.log('Firebase Initialized', config);
 const db = getDatabase(app);
 export default db;
