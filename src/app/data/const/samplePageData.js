@@ -8,7 +8,7 @@ const pageData = {
     backgroundColor: '#0f172a',
     title: 'This is a SAMPLE.',
     description: 'This is a sample page.',
-    imgUrl: 'https://cataas.com/cat',
+    imgUrl: 'https://i.imgur.com/8nLFCVP.png',
     updatedAt: new Date().toUTCString(),
     updatedBy: getCurrentUser(),
     enabled: true,
@@ -80,6 +80,7 @@ const pageData = {
       },
     },
     {
+      id: getUniqId(),
       type: 'Box',
       props: {
         ...UIDefaultProps['Box'],
@@ -112,6 +113,7 @@ const pageData = {
       },
     },
     {
+      id: getUniqId(),
       type: 'Box',
       props: {
         ...UIDefaultProps['Box'],
@@ -123,8 +125,8 @@ const pageData = {
             props: {
               ...UIDefaultProps['Card'],
               name: 'card',
-              title: 'Card Title',
-              description: 'Card Description',
+              title: 'PEPE',
+              description: `Don't thread on memes`,
               children: [
                 {
                   id: getUniqId(),
@@ -139,7 +141,7 @@ const pageData = {
                           ...UIDefaultProps['AspectRatio'],
                           name: 'card as',
                           ratio: [21, 9],
-                          imgUrl: 'https://cataas.com/cat/gif',
+                          imgUrl: 'https://i.imgur.com/gHsmIsAb.jpg',
                         },
                       },
                       {
@@ -149,9 +151,10 @@ const pageData = {
                           ...UIDefaultProps['Button'],
                           name: 'card button',
                           navigateTo: '/',
-                          text: 'Click me!',
+                          text: `Let's keep in touch!`,
                           size: 'lg',
                           variant: 'default',
+                          twStyle: 'mt-2',
                         },
                       },
                     ],
@@ -164,6 +167,7 @@ const pageData = {
       },
     },
     {
+      id: getUniqId(),
       type: 'Box',
       props: {
         ...UIDefaultProps['Box'],
@@ -175,11 +179,10 @@ const pageData = {
             props: {
               ...UIDefaultProps['Carousel'],
               name: 'carousel',
-              orientation: 'horizontal',
               items: [
-                { imgUrl: 'https://cataas.com/cat/gif', navigateTo: '/' },
-                { imgUrl: 'https://cataas.com/cat/gif', navigateTo: '/' },
-                { imgUrl: 'https://cataas.com/cat/gif', navigateTo: '/' },
+                { imgUrl: 'https://i.imgur.com/dyXU8D6b.jpg', navigateTo: '/' },
+                { imgUrl: 'https://i.imgur.com/HUczmwZb.jpg', navigateTo: '/' },
+                { imgUrl: 'https://i.imgur.com/amBqswib.jpg', navigateTo: '/' },
               ],
             },
           },
@@ -187,6 +190,7 @@ const pageData = {
       },
     },
     {
+      id: getUniqId(),
       type: 'Box',
       props: {
         ...UIDefaultProps['Box'],
