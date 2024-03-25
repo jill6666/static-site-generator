@@ -27,4 +27,29 @@ const schema = {
   landscapeColor: { type: 'Color', label: 'Landscape Color' },
 };
 
+export const defaultValues = {
+  name: 'Map',
+  height: 'auto',
+  width: 'auto',
+  padding: '4px 4px 4px 4px',
+  margin: '',
+  border: '',
+  borderRadius: '',
+  twStyle: '',
+  apiKey: '',
+  positions: [
+    {
+      lat: '37.7749',
+      lng: '-122.4194',
+    },
+  ],
+  defaultCenter: {
+    lat: '37.7749',
+    lng: '-122.4194',
+  },
+  defaultZoom: '8',
+  waterColor: '#00FFFF',
+  landscapeColor: '#00FF00',
+};
+
 export default schema;

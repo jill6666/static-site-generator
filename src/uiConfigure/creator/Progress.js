@@ -1,11 +1,23 @@
-import { BoxModel, Nameable, Size } from "../store/schema";
+import { BoxModel, Nameable, Size } from '../store/schema';
 
 const schema = {
   ...Nameable,
   ...Size,
   ...BoxModel,
-  twStyle: { type: "Input", label: "Style (tailwind)" },
-  value: { type: "Range", label: "Progress Value", min: 0, max: 100 },
+  twStyle: { type: 'Input', label: 'Style (tailwind)' },
+  value: { type: 'Range', label: 'Progress Value', min: 0, max: 100 },
+};
+
+export const defaultValues = {
+  name: 'Progress',
+  height: 'auto',
+  width: 'auto',
+  padding: '4px 4px 4px 4px',
+  margin: '',
+  border: '',
+  borderRadius: '',
+  twStyle: '',
+  value: 50,
 };
 
 export default schema;

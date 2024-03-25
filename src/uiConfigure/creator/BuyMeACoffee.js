@@ -32,4 +32,21 @@ const schema = {
   ...BoxModel,
 };
 
+export const defaultValues = {
+  name: 'BuyMeACoffee',
+  ownerAddr: '',
+  height: 'auto',
+  width: 'auto',
+  padding: '4px 4px 4px 4px',
+  margin: '',
+  border: '',
+  borderRadius: '',
+  twStyle: '',
+  text: 'Click',
+  variant: 'default',
+  size: 'default',
+  color: '#333',
+  background: 'transparent',
+};
+
 export default schema;

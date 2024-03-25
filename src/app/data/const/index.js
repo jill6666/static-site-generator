@@ -1,5 +1,6 @@
 import samplePageData from './samplePageData';
 import getUniqId from '../../utils/getUniqId';
+import { UIDefaultProps } from '../../../uiConfigure';
 
 export const PAGE_LIST = 'pageList';
 export const PAGE_ASSETS_TEMPLATE = 'pageAssetsTemplate';
@@ -20,13 +21,7 @@ export const defaultPageSchema = {
           {
             id: getUniqId(),
             type: 'Text',
-            props: {
-              name: 'hello world',
-              text: 'Hello, world',
-              fontSize: '32px',
-              fontWeight: '700',
-              textAlign: 'right',
-            },
+            props: { ...UIDefaultProps['Text'] },
           },
         ],
       },

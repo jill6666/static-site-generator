@@ -8,6 +8,7 @@ import flashElement from '../utils/flashElement';
 import getNewSchemaByDragOpt from '../utils/getNewSchemaByDragOpt';
 import redux from '../data/redux';
 import { UIStore } from '../../uiRenderer/store';
+import { UIDefaultProps } from '../../uiConfigure';
 import { PlusIcon, GridIcon, TextIcon } from '@radix-ui/react-icons';
 import { Button } from '../../uiRenderer/store/web/Button/markup';
 import getUpdateSchema from '../utils/getUpdateSchema';
@@ -139,10 +140,11 @@ const AssetsPanel = () => {
 export default AssetsPanel;
 
 const getElementDefaultProps = type => {
-  // TODO:
+  const defaultProps = UIDefaultProps?.[type];
+
   return {
     id: getUniqId(),
     type,
-    props: {},
+    props: defaultProps,
   };
 };
