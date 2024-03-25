@@ -14,9 +14,8 @@ export const defaultPageSchema = {
       id: getUniqId(),
       type: 'Box',
       props: {
-        name: 'intro',
-        padding: '.5rem 1rem',
-        margin: '0 0 1rem 0',
+        ...UIDefaultProps['Box'],
+        name: 'example',
         children: [
           {
             id: getUniqId(),

@@ -1,10 +1,13 @@
 import getCurrentUser from '../../utils/getCurrentUser';
+import getUniqId from '../../utils/getUniqId';
+import { UIDefaultProps } from '../../../uiConfigure';
 
 const pageData = {
-  pageId: '00000',
+  pageId: 'sample',
   settings: {
-    backgroundColor: '#eee',
+    backgroundColor: '#0f172a',
     title: 'This is a SAMPLE.',
+    description: 'This is a sample page.',
     imgUrl: 'https://cataas.com/cat',
     updatedAt: new Date().toUTCString(),
     updatedBy: getCurrentUser(),
@@ -12,16 +15,17 @@ const pageData = {
   },
   schema: [
     {
-      id: '00001',
+      id: getUniqId(),
       type: 'Box',
       props: {
+        ...UIDefaultProps['Box'],
         name: 'banner',
-        padding: '.5rem',
         children: [
           {
-            id: '10001',
+            id: getUniqId(),
             type: 'AspectRatio',
             props: {
+              ...UIDefaultProps['AspectRatio'],
               name: 'bannerImg',
               ratio: [21, 9],
               imgUrl: 'https://cataas.com/cat',
@@ -31,65 +35,75 @@ const pageData = {
       },
     },
     {
-      id: '00002',
+      id: getUniqId(),
       type: 'Box',
       props: {
+        ...UIDefaultProps['Box'],
         name: 'intro',
-        padding: '.5rem 1rem',
-        margin: '0 0 1rem 0',
         children: [
           {
-            id: '20001',
+            id: getUniqId(),
             type: 'Text',
             props: {
-              name: 'hello world',
-              text: 'Hello, world',
+              ...UIDefaultProps['Text'],
+              name: 'hello',
+              text: 'If You Like the Project, 👇',
               fontSize: '32px',
               fontWeight: '700',
               textAlign: 'right',
+              color: '#eee',
             },
           },
           {
-            id: '20002',
+            id: getUniqId(),
             type: 'Progress',
             props: {
+              ...UIDefaultProps['Progress'],
+              padding: '',
               name: 'progress',
               value: '77',
               color: 'teal',
               background: 'pink',
               height: '12px',
+              twStyle: 'border mx-1',
+            },
+          },
+          {
+            id: getUniqId(),
+            type: 'BuyMeACoffee',
+            props: {
+              ...UIDefaultProps['BuyMeACoffee'],
+              ownerAddr: '0xFE2e24329D4cf49362CC864A51B792157e25Ab92',
             },
           },
         ],
       },
     },
     {
-      id: '00003',
       type: 'Box',
       props: {
+        ...UIDefaultProps['Box'],
         name: 'tabs section',
-        padding: '.5rem',
         height: '160px',
         children: [
           {
-            id: '30001',
+            id: getUniqId(),
             type: 'Tabs',
             props: {
+              ...UIDefaultProps['Tabs'],
               name: 'tabs',
-              height: '200px',
-              padding: '.5rem',
-              contentColor: 'pink',
-              background: '#333',
               borderRadius: '5px',
+              padding: '12px 8px 12px 8px',
+              darkMode: true,
               items: [
                 {
-                  tab: { text: 'Progress', fontSize: '14px' },
+                  tab: { text: 'Buy Me a Coffee', fontSize: '14px' },
                   content:
-                    'Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.',
+                    '☕️ This is a simple way to support the project. If you like the project, you can buy me a coffee.',
                 },
                 {
-                  tab: { text: 'Tabs', fontSize: '14px' },
-                  content: 'A set of layered sections of content—known as tab panels—that are displayed one at a time.',
+                  tab: { text: 'History', fontSize: '14px' },
+                  content: '👻 0x1234...5678 supported the project with 0.1 ETH.',
                 },
               ],
             },
@@ -98,46 +112,46 @@ const pageData = {
       },
     },
     {
-      id: '00004',
       type: 'Box',
       props: {
+        ...UIDefaultProps['Box'],
         name: 'card section',
-        padding: '.5rem',
-        margin: '0 0 1rem 0',
         children: [
           {
-            id: '40001',
+            id: getUniqId(),
             type: 'Card',
             props: {
+              ...UIDefaultProps['Card'],
               name: 'card',
               title: 'Card Title',
               description: 'Card Description',
               children: [
                 {
-                  id: '41001',
+                  id: getUniqId(),
                   type: 'Box',
                   props: {
                     padding: '0 .5rem .5rem .5rem',
                     children: [
                       {
-                        id: '41101',
+                        id: getUniqId(),
                         type: 'AspectRatio',
                         props: {
+                          ...UIDefaultProps['AspectRatio'],
                           name: 'card as',
                           ratio: [21, 9],
                           imgUrl: 'https://cataas.com/cat/gif',
                         },
                       },
                       {
-                        id: '41102',
+                        id: getUniqId(),
                         type: 'Button',
                         props: {
+                          ...UIDefaultProps['Button'],
                           name: 'card button',
                           navigateTo: '/',
                           text: 'Click me!',
-                          margin: '.5rem 0 0 0',
                           size: 'lg',
-                          variant: 'secondary',
+                          variant: 'default',
                         },
                       },
                     ],
@@ -150,17 +164,16 @@ const pageData = {
       },
     },
     {
-      id: '00005',
       type: 'Box',
       props: {
+        ...UIDefaultProps['Box'],
         name: 'carousel section',
-        padding: '.5rem',
-        margin: '0 0 1rem 0',
         children: [
           {
-            id: '50001',
+            id: getUniqId(),
             type: 'Carousel',
             props: {
+              ...UIDefaultProps['Carousel'],
               name: 'carousel',
               orientation: 'horizontal',
               items: [
@@ -174,19 +187,17 @@ const pageData = {
       },
     },
     {
-      id: '00006',
       type: 'Box',
       props: {
+        ...UIDefaultProps['Box'],
         name: 'accordion section',
-        padding: '.5rem',
         children: [
           {
-            id: '60001',
+            id: getUniqId(),
             type: 'Accordion',
             props: {
+              ...UIDefaultProps['Accordion'],
               name: 'accordion',
-              padding: '.5rem',
-              margin: '.2rem',
               background: 'white',
               borderRadius: '1rem',
               triggerColor: 'teal',
@@ -211,24 +222,25 @@ const pageData = {
       },
     },
     {
-      id: '00007',
+      id: getUniqId(),
       type: 'Box',
       props: {
+        ...UIDefaultProps['Box'],
         name: 'contact section',
-        padding: '.5rem',
         children: [
           {
-            id: '70001',
+            id: getUniqId(),
             type: 'Box',
             props: {
+              ...UIDefaultProps['Box'],
               name: 'contact',
               padding: '1rem 0',
               twStyle: 'gap-2',
               children: [
                 {
-                  id: '71001',
                   type: 'Text',
                   props: {
+                    ...UIDefaultProps['Text'],
                     name: 'contact text',
                     text: 'Contact Us',
                     fontSize: '1.5rem',
@@ -236,9 +248,10 @@ const pageData = {
                   },
                 },
                 {
-                  id: '71002',
+                  id: getUniqId(),
                   type: 'Text',
                   props: {
+                    ...UIDefaultProps['Text'],
                     name: 'address',
                     text: '845 Avison Way, Vancouver, BC V6G 3E2',
                     fontSize: '14px',
@@ -249,17 +262,13 @@ const pageData = {
             },
           },
           {
-            id: '70002',
+            id: getUniqId(),
             type: 'Map',
             props: {
+              ...UIDefaultProps['Map'],
               name: 'map',
-              positions: [
-                { lat: 25.0407284, lng: 121.5484174 },
-                { lat: 25.0533797, lng: 121.5462562 },
-                { lat: 25.0518654, lng: 121.5448042 },
-              ],
-              defaultCenter: { lat: 25.0495911, lng: 121.5455781 },
-              defaultZoom: 16,
+              positions: [{ lat: 49.3006591, lng: -123.1308637 }],
+              defaultCenter: { lat: 49.3006591, lng: -123.1308637 },
             },
           },
         ],
