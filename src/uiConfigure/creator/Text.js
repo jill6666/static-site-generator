@@ -3,7 +3,6 @@ import { Nameable, Typography } from '../store/schema';
 const schema = {
   ...Nameable,
   ...Typography,
-  text: { type: 'Input', label: 'Content' },
   twStyle: { type: 'Input', label: 'Style (tailwind)' },
   textAlign: {
     type: 'Radio',

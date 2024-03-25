@@ -1,38 +1,28 @@
-import React, { Suspense } from 'react';
+import React from 'react';
 import { Tabs as TabsMarkup, TabsContent, TabsList, TabsTrigger } from './markup';
 import size from 'lodash/size';
 
-const RenderSchema = React.lazy(() => import('../../../index'));
-
-const Tabs = ({
-  items = [],
-  width,
-  padding,
-  margin,
-  border,
-  borderRadius,
-  background,
-  tabColor,
-  contentColor,
-  children,
-}) => {
+const Tabs = ({ items = [], padding, margin, border, borderRadius, darkMode = false }) => {
   return (
-    <TabsMarkup defaultValue={items?.[0]?.tab?.text} className="w-full" style={{ width, margin }}>
+    <TabsMarkup defaultValue={items?.[0]?.tab?.text} style={{ margin }}>
       <TabsList
         className="grid w-full"
         style={{
           gridTemplateColumns: `repeat(${size(items) || 1} , 1fr)`,
+          background: darkMode ? 'black' : '',
+          border: darkMode ? '1px solid #eee' : '',
         }}
       >
         {items.map((item, idx) => (
           <TabsTrigger
             key={item?.tab?.text || idx}
             style={{
-              color: tabColor || item?.tab?.color,
+              color: darkMode ? '#eee' : '',
               fontWeight: item?.tab?.fontWeight,
               fontSize: item?.tab?.fontSize,
             }}
             value={item?.tab?.text}
+            className={darkMode ? 'data-[state=active]:bg-[#555]' : ''}
           >
             {item?.tab?.text}
           </TabsTrigger>
@@ -45,19 +35,13 @@ const Tabs = ({
           style={{
             height: 'auto',
             padding,
-            color: contentColor,
-            background,
-            border,
+            color: darkMode ? '#eee' : '#0E172A',
+            background: darkMode ? 'black' : '#F1F5F9',
+            border: border || darkMode ? '1px solid #eee' : '',
             borderRadius,
           }}
         >
-          {!children?.[index] ? (
-            item?.content
-          ) : (
-            <Suspense fallback={<div>OOPS! Something went wrong.</div>}>
-              <RenderSchema schema={[children?.[index]]} />
-            </Suspense>
-          )}
+          {item?.content}
         </TabsContent>
       ))}
     </TabsMarkup>

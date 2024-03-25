@@ -1,9 +1,8 @@
-import { BoxModel, Nameable, Size } from '../store/schema';
+import { Nameable, Size } from '../store/schema';
 
 const schema = {
   ...Nameable,
   ...Size,
-  ...BoxModel,
   apiKey: { type: 'Input', label: 'API Key for GoogleMap API' },
   twStyle: { type: 'Input', label: 'Style (tailwind)' },
   positions: {
@@ -29,27 +28,23 @@ const schema = {
 
 export const defaultValues = {
   name: 'Map',
-  height: 'auto',
+  height: '350px',
   width: 'auto',
-  padding: '4px 4px 4px 4px',
-  margin: '',
-  border: '',
-  borderRadius: '',
   twStyle: '',
   apiKey: '',
   positions: [
     {
-      lat: '37.7749',
-      lng: '-122.4194',
+      lat: 49.3006591,
+      lng: -123.1308637,
     },
   ],
   defaultCenter: {
-    lat: '37.7749',
-    lng: '-122.4194',
+    lat: 49.3006591,
+    lng: -123.1308637,
   },
-  defaultZoom: '8',
-  waterColor: '#00FFFF',
-  landscapeColor: '#00FF00',
+  defaultZoom: 12,
+  waterColor: '#BBE2EC',
+  landscapeColor: '#CDFADB',
 };
 
 export default schema;

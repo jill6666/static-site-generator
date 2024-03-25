@@ -15,7 +15,7 @@ export const defaultValues = {
   margin: '',
   border: '',
   borderRadius: '',
-  twStyle: 'bg-white border border-gray-200 p-4 rounded-md shadow-md',
+  twStyle: 'p-4',
 };
 
 export default schema;

@@ -1,4 +1,4 @@
-import { BoxModel, Nameable, Size } from '../store/schema';
+import { Nameable, BoxModel } from '../store/schema';
 
 const schema = {
   ...Nameable,
@@ -25,26 +25,18 @@ const schema = {
       { label: 'Large', value: 'lg' },
     ],
   },
-  color: { type: 'Color', label: 'Text Color' },
-  background: { type: 'Color', label: 'Background Color' },
-  ...Size,
-  ...BoxModel,
+  borderRadius: { ...BoxModel.borderRadius },
 };
 
 export const defaultValues = {
   name: 'Button',
   height: 'auto',
   width: 'auto',
-  padding: '4px 4px 4px 4px',
-  margin: '',
-  border: '',
-  borderRadius: '',
   twStyle: '',
   text: 'Click',
   variant: 'default',
   size: 'default',
-  color: 'white',
-  background: '#333',
+  borderRadius: '8px',
 };
 
 export default schema;

@@ -1,18 +1,12 @@
-import * as React from "react";
+import * as React from 'react';
 
-import AspectRatio from "../AspectRatio";
-import {
-  Carousel as CarouselMarkup,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "./markup";
+import AspectRatio from '../AspectRatio';
+import { Carousel as CarouselMarkup, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from './markup';
 
-const Carousel = ({ orientation, items = [] }) => {
+const Carousel = ({ items = [] }) => {
   return (
     <div className="w-full px-12">
-      <CarouselMarkup orientation={orientation}>
+      <CarouselMarkup>
         <CarouselContent className="w-full">
           {items.map((item, index) => (
             <CarouselItem key={index}>

@@ -9,8 +9,6 @@ const Button = ({
   size,
   color,
   background,
-  width,
-  height,
   padding,
   margin,
   border,
@@ -19,22 +17,7 @@ const Button = ({
   ...props
 }) => {
   return (
-    <ButtonMarkup
-      size={size}
-      variant={variant}
-      className={twStyle}
-      style={{
-        color,
-        background,
-        width,
-        height,
-        padding,
-        margin,
-        border,
-        borderRadius,
-      }}
-      {...props}
-    >
+    <ButtonMarkup size={size} variant={variant} className={twStyle} style={{ margin, borderRadius }} {...props}>
       {isLoading ? <ReloadIcon className="animate-spin" /> : text}
     </ButtonMarkup>
   );

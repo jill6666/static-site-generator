@@ -7,11 +7,7 @@ const Map = ({
   defaultZoom,
   twStyle,
   height = '300px',
-  width = '100%',
-  padding,
-  margin,
-  border,
-  borderRadius,
+  width,
   waterColor = '#BBE2EC',
   landscapeColor = '#CDFADB',
   apiKey,
@@ -45,17 +41,7 @@ const Map = ({
     <>
       {key && (
         <APIProvider apiKey={key}>
-          <div
-            style={{
-              height,
-              width,
-              padding,
-              margin,
-              border,
-              borderRadius,
-            }}
-            className={twStyle}
-          >
+          <div style={{ height, width }} className={twStyle}>
             <MapMarkup
               defaultCenter={defaultCenter}
               defaultZoom={defaultZoom}

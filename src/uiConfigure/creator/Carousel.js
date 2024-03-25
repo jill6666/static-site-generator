@@ -1,10 +1,7 @@
-import { BoxModel, Nameable, Size } from '../store/schema';
+import { Nameable } from '../store/schema';
 
 const schema = {
   ...Nameable,
-  ...Size,
-  ...BoxModel,
-  twStyle: { type: 'Input', label: 'Style (tailwind)' },
   items: {
     type: 'Repeater',
     label: 'Content',
@@ -17,13 +14,6 @@ const schema = {
 
 export const defaultValues = {
   name: 'Carousel',
-  height: 'auto',
-  width: 'auto',
-  padding: '4px 4px 4px 4px',
-  margin: '',
-  border: '',
-  borderRadius: '',
-  twStyle: '',
   items: [
     {
       imgUrl: 'https://cataas.com/cat',

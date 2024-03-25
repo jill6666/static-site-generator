@@ -3,7 +3,6 @@ import React, { Suspense } from "react";
 const RenderSchema = React.lazy(() => import("../../../index"));
 
 const Box = ({
-  name,
   children,
   height,
   width,
@@ -18,7 +17,6 @@ const Box = ({
     <div
       className={twStyle}
       style={{
-        name,
         height,
         width,
         padding,

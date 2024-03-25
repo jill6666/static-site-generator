@@ -1,52 +1,29 @@
-import { BoxModel, Nameable, Size } from '../store/schema';
+import { Nameable } from '../store/schema';
 
 const schema = {
   ...Nameable,
-  text: { type: 'Input', label: 'Text' },
   ownerAddr: { type: 'Input', label: 'Account Address', placeholder: 'Start with 0x' },
-  twStyle: { type: 'Input', label: 'Style (tailwind)' },
-  variant: {
-    type: 'Radio',
-    label: 'Style',
-    control: [
-      { label: 'Default', value: 'default' },
-      { label: 'Destructive', value: 'destructive' },
-      { label: 'Outline', value: 'outline' },
-      { label: 'Secondary', value: 'secondary' },
-      { label: 'Ghost', value: 'ghost' },
-      { label: 'Link', value: 'link' },
-    ],
-  },
-  size: {
-    type: 'Radio',
-    label: 'Size',
-    control: [
-      { label: 'Default', value: 'default' },
-      { label: 'Small', value: 'sm' },
-      { label: 'Large', value: 'lg' },
-    ],
-  },
-  color: { type: 'Color', label: 'Text Color' },
+  darkMode: { type: 'Switch', label: 'Dark Mode' },
+  title: { type: 'Input', label: 'Title' },
+  description: { type: 'Input', label: 'Description' },
+  titleColor: { type: 'Color', label: 'Title Color' },
   background: { type: 'Color', label: 'Background Color' },
-  ...Size,
-  ...BoxModel,
+  buttonColor: { type: 'Color', label: 'Button Color' },
+  buttonBackground: { type: 'Color', label: 'Button Background' },
+  buttonBorder: { type: 'Input', label: 'Button Border' },
 };
 
 export const defaultValues = {
   name: 'BuyMeACoffee',
   ownerAddr: '',
-  height: 'auto',
-  width: 'auto',
-  padding: '4px 4px 4px 4px',
-  margin: '',
-  border: '',
-  borderRadius: '',
-  twStyle: '',
-  text: 'Click',
-  variant: 'default',
-  size: 'default',
-  color: '#333',
-  background: 'transparent',
+  darkMode: true,
+  title: 'Buy Me A Coffee',
+  description: 'Thank you for supporting me! 🙏',
+  titleColor: '',
+  background: '',
+  buttonColor: '#555',
+  buttonBackground: '#eee',
+  buttonBorder: '1px solid #555',
 };
 
 export default schema;

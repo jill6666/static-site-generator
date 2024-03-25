@@ -1,17 +1,11 @@
-import React, { Suspense } from "react";
-import {
-  Card as CardMarkup,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "./markup";
+import React, { Suspense } from 'react';
+import { Card as CardMarkup, CardDescription, CardHeader, CardTitle } from './markup';
 
-const RenderSchema = React.lazy(() => import("../../../index"));
+const RenderSchema = React.lazy(() => import('../../../index'));
 
 const Card = ({
-  name,
   children,
-  twStyle = "",
+  twStyle = '',
   title,
   description,
   titleColor,
@@ -26,7 +20,7 @@ const Card = ({
 }) => {
   return (
     <CardMarkup
-      className={"w-full " + twStyle}
+      className={twStyle}
       style={{
         height,
         width,
@@ -39,14 +33,8 @@ const Card = ({
     >
       {(description || title) && (
         <CardHeader>
-          {title && (
-            <CardTitle style={{ color: titleColor }}>{title}</CardTitle>
-          )}
-          {description && (
-            <CardDescription style={{ color: descriptionColor }}>
-              {description}
-            </CardDescription>
-          )}
+          {title && <CardTitle style={{ color: titleColor }}>{title}</CardTitle>}
+          {description && <CardDescription style={{ color: descriptionColor }}>{description}</CardDescription>}
         </CardHeader>
       )}
       <Suspense fallback={<></>}>

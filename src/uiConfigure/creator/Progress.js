@@ -6,6 +6,8 @@ const schema = {
   ...BoxModel,
   twStyle: { type: 'Input', label: 'Style (tailwind)' },
   value: { type: 'Range', label: 'Progress Value', min: 0, max: 100 },
+  background: { type: 'Color', label: 'Background Color' },
+  color: { type: 'Color', label: 'Progress Color' },
 };
 
 export const defaultValues = {
@@ -17,6 +19,8 @@ export const defaultValues = {
   border: '',
   borderRadius: '',
   twStyle: '',
+  background: 'pink',
+  color: 'teal',
   value: 50,
 };
 
