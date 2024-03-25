@@ -1,15 +1,12 @@
-import { Form } from "antd";
+import { Form } from 'antd';
 
-const withField = (Field) => (props) => {
+const withField = Field => props => {
   const form = Form.useFormInstance();
   const name = props?.name;
 
-  const handleOnChange = (event) => {
+  const handleOnChange = event => {
     const newValue =
-      typeof event === "object" &&
-      !Array.isArray(event) &&
-      event !== null &&
-      event.hasOwnProperty("target")
+      typeof event === 'object' && !Array.isArray(event) && event !== null && event.hasOwnProperty('target')
         ? event?.target?.value
         : event;
 
@@ -19,7 +16,6 @@ const withField = (Field) => (props) => {
   const enhanceProps = {
     name,
     value: form.getFieldValue(name),
-    checked: form.getFieldValue(name) || "",
     onChange: handleOnChange,
 
     ...props,

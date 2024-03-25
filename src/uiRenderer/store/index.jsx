@@ -18,6 +18,7 @@ import Input from './form/Input';
 import Radio from './form/Radio';
 import Range from './form/Range';
 import Size from './form/Size';
+import Switch from './form/Switch';
 
 import withField from '../utils/withField';
 
@@ -44,4 +45,5 @@ export const FormStore = {
   Size: withField(Size),
   Border: withField(Border),
   Distance: withField(Distance),
+  Switch: withField(Switch),
 };
