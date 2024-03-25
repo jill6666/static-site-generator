@@ -18,6 +18,7 @@ import omitBy from 'lodash/omitBy';
 import size from 'lodash/size';
 import setPageData from '../data/firebase/setPageData';
 import { message } from 'antd';
+import samplePageSchema from '../data/const/samplePageData';
 
 const Edit = () => {
   const schema = useSelector(pageSelector.schema);
@@ -28,9 +29,14 @@ const Edit = () => {
 
   useEffect(() => {
     const init = async () => {
-      const data = await getPageData({ slug: pageId });
-      const schema = get(data, 'schema', defaultPageSchema.schema);
-      const settings = get(data, 'settings', defaultPageSchema.settings);
+      let data;
+
+      const pageData = await getPageData({ slug: pageId });
+      if (!pageData && pageId === 'sample') data = samplePageSchema;
+      else data = pageData;
+
+      const schema = get(data, 'schema', []);
+      const settings = get(data, 'settings', {});
 
       redux.updateControlId(null);
       redux.updateSettings(settings);
