@@ -11,6 +11,7 @@ import handlePreview from '../utils/handlePreview';
 import getCurrentUser from '../utils/getCurrentUser';
 import getPagesData from '../data/firebase/getPageList';
 import setPageData from '../data/firebase/setPageData';
+import samplePageSchema from '../data/const/samplePageData';
 
 const App = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -25,7 +26,7 @@ const App = () => {
       if (size(data)) {
         const res = Object.values(data);
         setList(res);
-      }
+      } else setList([samplePageSchema]);
     };
     init();
   }, []);
